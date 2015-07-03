@@ -18,23 +18,20 @@
 // URL Schemes 应填写：kWXAppID, tencent+kQQAppID, wb+kSinaAppKey, QQ+HEX(APP_ID)/*16进制表示的AppleID，不足的在前面补上0*/
 // wx293e65ba9600207c,wb1832590950,QQ41C7CF5C,tencent1103613788
 
-// ShareSDK（ 使用巨细热点的 AppKey）
-#define kShareSDKAppKey     @"69df40efa04"
+// ShareSDK（  AppKey）
+#define kShareSDKAppKey     @"5f9ba6f3d174"
 // 微信
-#define kWXAppID            @"wx293e65ba9600207c"
-#define kWXAppSecret        @"b1317cf0e32edd52eb19fad5659afbb6"
+#define kWXAppID            @"wx85d5c26606f09756"
+#define kWXAppSecret        @"7b85d109aa2797b13a23e916744c1571"
+
 // QQ/空间
-#define kQQAppID            @"1103613788"
-#define kQQSpaceSecret      @"t6tQbVkipxbCbLbK"
-//腾讯微博
-#define kQQAppKey           @"1103613788"
-#define kQQAppSecret        @"t6tQbVkipxbCbLb"
-#define kQQRedirectUrl      @"http://xite.juxi.cc"
+#define kQQAppID            @" "
+#define kQQSpaceSecret      @" "
 
 // 新浪
-#define kSinaAppKey         @"1832590950"
-#define kSinaAppSecret      @"e1ef9a9d4c9987b8089d81bd386fd298"
-#define kSinaRedirectUrl    @"http://xite.juxi.cc"
+#define kSinaAppKey         @"568898243"
+#define kSinaAppSecret      @"38a4f8204cc784f81f9f0daaf31e02e3"
+#define kSinaRedirectUrl    @"http://www.msb365.com"
 
 
 @implementation QNShareSDKTools

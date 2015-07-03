@@ -8,12 +8,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,QNInterceptorNavigationBarHiddenProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "首页"
-        self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view.
     }
 

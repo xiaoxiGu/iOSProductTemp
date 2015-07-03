@@ -9,7 +9,14 @@
 #ifndef MSBPhone_MSBPhone_Bridging_Header_h
 #define MSBPhone_MSBPhone_Bridging_Header_h
 
-//#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "PayTool.h"
+#import "WXApi.h"
+
+#import "QNBaseTableViewController.h"
+
+#import "ReactiveCocoa.h"
+
+#import "Aspects.h"
 
 #import "QNShareSDKTools.h"     // 分享ShareSDK
 

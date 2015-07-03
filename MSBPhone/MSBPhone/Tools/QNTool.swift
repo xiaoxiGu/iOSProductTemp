@@ -306,20 +306,20 @@ extension QNTool {
 //MARK:- 自动提示编辑昵称
 extension QNTool {
     class func autoShowEditNickNameView() {
-//        if g_NickName == nil {
-//            let alert = UIAlertView(title: nil, message: "为了方便您的家人识别您，请输入昵称", delegate: nil, cancelButtonTitle: "取消")
-//            alert.addButtonWithTitle("确认")
-//            alert.alertViewStyle = .PlainTextInput
-//            alert.rac_buttonClickedSignal().subscribeNext { (index) -> Void in
-//                if let indexInt = index as? Int, let text = alert.textFieldAtIndex(0)?.text where indexInt == 1 {
-//                    ChangeNickNameViewController.updateDeviceName(text)
-//                }
-//            }
-//            alert.show()
-//            
-//            alert.textFieldAtIndex(0)?.placeholder = "昵称"
-//            alert.textFieldAtIndex(0)?.returnKeyType = .Done
-//        }
+        if g_NickName == nil {
+            let alert = UIAlertView(title: nil, message: "为了方便您的家人识别您，请输入昵称", delegate: nil, cancelButtonTitle: "取消")
+            alert.addButtonWithTitle("确认")
+            alert.alertViewStyle = .PlainTextInput
+            alert.rac_buttonClickedSignal().subscribeNext { (index) -> Void in
+                if let indexInt = index as? Int, let text = alert.textFieldAtIndex(0)?.text where indexInt == 1 {
+
+                }
+            }
+            alert.show()
+            
+            alert.textFieldAtIndex(0)?.placeholder = "昵称"
+            alert.textFieldAtIndex(0)?.returnKeyType = .Done
+        }
     }
 }
 

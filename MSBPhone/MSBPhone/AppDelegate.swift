@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        //开启样式控制
+        QNInterceptor.start()
+        //开启支付功能
+        PayTool.sharedPayTool()
         return true
     }
 
@@ -41,6 +45,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool{
+        return PayTool.HandleApplicationOpenURL(url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+    
+    //收到一个来自微信的处理结果。调用一次sendReq后会收到onResp。
+    func onResp(resp:BaseResp){
+        if (resp.isKindOfClass(PayResp.self)){
+            let response = resp
+            let title = "支付结果"
+            let msg = NSString(format: "errcode:%d",response.errCode)
+            //            let alert = UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles:nil, nil)
+            //            alert.show()
+            if response.errCode == WXSuccess.value{
+                print("支付成功")
+            }else{
+                print("支付失败")
+            }
+        }
+    }
+    
 }
 

@@ -12,7 +12,7 @@ import UIKit
 /**
 *  普通的网页浏览
 */
-class QNWebViewController : UIViewController, UIWebViewDelegate {
+class QNWebViewController : UIViewController, UIWebViewDelegate, QNInterceptorProtocol {
     var url: String = "";
     var webView: UIWebView?;
     var activity: UIActivityIndicatorView?;

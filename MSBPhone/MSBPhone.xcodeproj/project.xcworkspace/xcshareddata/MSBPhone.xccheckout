@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>FD8B8CA5-CA80-4F34-96CF-4ADEC0EEE4DA</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MSBPhone</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>26CEDDEF90BB0C32F0061A9954724B5EB7BE74A5</key>
-		<string>192.168.1.2:msbNew_ios.git</string>
+		<string>192.168.200.2:msbNew_ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MSBPhone/MSBPhone.xcodeproj/project.xcworkspace</string>
+	<string>MSBPhone/MSBPhone.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>26CEDDEF90BB0C32F0061A9954724B5EB7BE74A5</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>192.168.1.2:msbNew_ios.git</string>
+	<string>192.168.200.2:msbNew_ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
