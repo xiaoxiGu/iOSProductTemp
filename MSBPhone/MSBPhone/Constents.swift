@@ -121,3 +121,14 @@ func compareVersion(version1: String, version2: String) -> NSComparisonResult? {
         return NSComparisonResult.OrderedAscending
     }
 }
+
+// MARK: - 关闭非DEBUG模式下的打印
+#if DEBUG
+#else
+    func println() {}
+    func println(object: Any)() {}
+    func printl(object: Any)() {}
+
+    func NSLog(format: String, args: CVarArgType...) {}
+
+#endif
