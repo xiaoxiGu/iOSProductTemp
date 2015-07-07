@@ -260,21 +260,21 @@ set {
 }
 extension QNTool {
     class func showCommentAppAlertView() {
-//        let commentAlertView = UIAlertView(title: "程序员牺牲陪女神的时间，加班加点做出的产品，你狠心不给个评分吗？", message: nil, delegate: nil, cancelButtonTitle: "狠心拒绝")
-//        commentAlertView.addButtonWithTitle("去评分")
-//        commentAlertView.rac_buttonClickedSignal().subscribeNext({(indexNumber) -> Void in
-//            if let index = indexNumber as? Int {
-//                switch index {
-//                case 0: // 残忍拒绝
-//                    theRemainingNumberShowComment = nil
-//                case 1: // 去评论
-//                    theRemainingNumberShowComment = -1
-//                    UIApplication.sharedApplication().openURL(NSURL(string: APP_URL_IN_ITUNES)!)
-//                default: break
-//                }
-//            }
-//        })
-//        commentAlertView.show()
+        let commentAlertView = UIAlertView(title: "程序员牺牲陪女神的时间，加班加点做出的产品，你狠心不给个评分吗？", message: nil, delegate: nil, cancelButtonTitle: "狠心拒绝")
+        commentAlertView.addButtonWithTitle("去评分")
+        commentAlertView.rac_buttonClickedSignal().subscribeNext({(indexNumber) -> Void in
+            if let index = indexNumber as? Int {
+                switch index {
+                case 0: // 残忍拒绝
+                    theRemainingNumberShowComment = nil
+                case 1: // 去评论
+                    theRemainingNumberShowComment = -1
+                    UIApplication.sharedApplication().openURL(NSURL(string: APP_URL_IN_ITUNES)!)
+                default: break
+                }
+            }
+        })
+        commentAlertView.show()
     }
     
     // 自动显示弹出App评论框

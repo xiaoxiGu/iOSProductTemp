@@ -7,6 +7,7 @@
 //
 
 import UIKit
+let kKeyIsFirstStartApp = ("IsFirstStartApp" as NSString).encrypt(g_SecretKey) // 第一次启动判断的Key
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         QNInterceptor.start()
         //开启支付功能
         PayTool.sharedPayTool()
+        //集成环信SDK
+        EaseMob.sharedInstance().registerSDKWithAppKey("mingshibao365#mingshibao", apnsCertName: "")
+        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        EaseMob.sharedInstance().chatManager.asyncLoginWithUsername("10086", password: "123456", completion: { (array, error) -> Void in
+//            print("111")
+//        }, onQueue: nil)
+        
+        // 启动过渡页
+        let allowShowStartPages = !NSUserDefaults.standardUserDefaults().boolForKey(kKeyIsFirstStartApp)
+        if allowShowStartPages {
+            UIApplication.sharedApplication().statusBarHidden = true
+            let startPagesWindow = StartPagesWindow()
+            startPagesWindow.finished = { () -> Void in
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kKeyIsFirstStartApp)
+            }
+        }
+        
+        // 自动显示app评论框
+        if !allowShowStartPages {
+            QNTool.autoShowCommentAppAlertView()
+        }
+        
         return true
     }
 
@@ -31,18 +54,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        EaseMob.sharedInstance().applicationDidEnterBackground(application)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        EaseMob.sharedInstance().applicationWillEnterForeground(application)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        EaseMob.sharedInstance().applicationDidBecomeActive(application)
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        EaseMob.sharedInstance().applicationWillTerminate(application)
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool{
