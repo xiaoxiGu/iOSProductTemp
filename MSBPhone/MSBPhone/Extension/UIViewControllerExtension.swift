@@ -30,8 +30,8 @@ extension UIViewController {
 
 //MARK:- 为 UIViewController ... 扩展一个 返回功能
 extension UIViewController {
-    func back() {
-        if let navigationController = self.navigationController {
+    @IBAction func back() {
+        if let navigationController = self.navigationController where (navigationController.viewControllers.first as? UIViewController) != self {
             navigationController.popViewControllerAnimated(true)
         }
         else {
