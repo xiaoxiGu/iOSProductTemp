@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let qnToolInstance = QNTool()
+
 /**
 *  //MARK:- 通用工具类
 */
@@ -323,4 +325,38 @@ extension QNTool {
     }
 }
 
+
+// MARK: - 让 Navigation 支持右滑返回
+extension QNTool: UIGestureRecognizerDelegate {
+    
+    /**
+    让 Navigation 支持右滑返回
+    
+    :param: navigationController 需要支持的 UINavigationController 对象
+    */
+    class func addInteractive(navigationController: UINavigationController?) {
+        navigationController?.interactivePopGestureRecognizer.enabled = true
+        navigationController?.interactivePopGestureRecognizer.delegate = qnToolInstance
+    }
+    
+    /**
+    移除 Navigation 右滑返回
+    
+    :param: navigationController 需要支持的 UINavigationController 对象
+    */
+    class func removeInteractive(navigationController: UINavigationController?) {
+        navigationController?.interactivePopGestureRecognizer.enabled = false
+        navigationController?.interactivePopGestureRecognizer.delegate = nil
+    }
+    
+    // MARK: UIGestureRecognizerDelegate
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let vc = topViewController() where gestureRecognizer == vc.navigationController?.interactivePopGestureRecognizer {
+            return (vc.navigationController!.viewControllers.count > 1)
+        }
+        return false // 其他情况，则不支持
+    }
+    
+    
+}
 
