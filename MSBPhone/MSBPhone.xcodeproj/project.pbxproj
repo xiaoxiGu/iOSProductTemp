@@ -383,7 +383,6 @@
 		674DE0681B43C34200762B69 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674DE0641B43C34200762B69 /* UIViewControllerExtension.swift */; };
 		674DE0691B43C34200762B69 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674DE0651B43C34200762B69 /* StringExtension.swift */; };
 		674DE06A1B43C34200762B69 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674DE0661B43C34200762B69 /* UIViewExtension.swift */; };
-		674DE0871B43F57000762B69 /* libPods-Reachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 674DE0811B43F57000762B69 /* libPods-Reachability.a */; };
 		674DE08A1B43F57000762B69 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 674DE0841B43F57000762B69 /* libPods.a */; };
 		6785BD6C1B4BC7F50026926B /* BlinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785BD691B4BC7F50026926B /* BlinkView.swift */; };
 		6785BD6D1B4BC7F50026926B /* StartImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6785BD6A1B4BC7F50026926B /* StartImageView.swift */; };
@@ -502,12 +501,6 @@
 		6798B1011B44D1B600B1D366 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798B08A1B44D1B600B1D366 /* UIImageView+HighlightedWebCache.m */; };
 		6798B1021B44D1B600B1D366 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798B08C1B44D1B600B1D366 /* UIImageView+WebCache.m */; };
 		6798B1031B44D1B600B1D366 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798B08E1B44D1B600B1D366 /* UIView+WebCacheOperation.m */; };
-		67ABE90E1B4518B600E8C1ED /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67ABE9041B4518B600E8C1ED /* MJRefresh.bundle */; };
-		67ABE90F1B4518B600E8C1ED /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABE9071B4518B600E8C1ED /* MJRefreshBaseView.m */; };
-		67ABE9101B4518B600E8C1ED /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABE9091B4518B600E8C1ED /* MJRefreshConst.m */; };
-		67ABE9111B4518B600E8C1ED /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABE90B1B4518B600E8C1ED /* MJRefreshFooterView.m */; };
-		67ABE9121B4518B600E8C1ED /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABE90D1B4518B600E8C1ED /* MJRefreshHeaderView.m */; };
-		67ABE9151B451B1900E8C1ED /* QNBaseTabbleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABE9131B451B1900E8C1ED /* QNBaseTabbleViewController.m */; };
 		67ABEB801B45469800E8C1ED /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 67ABEB141B45469700E8C1ED /* AlipaySDK.bundle */; };
 		67ABEB811B45469800E8C1ED /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67ABEB151B45469700E8C1ED /* AlipaySDK.framework */; };
 		67ABEB821B45469800E8C1ED /* APAuthV2Info.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABEB171B45469700E8C1ED /* APAuthV2Info.m */; };
@@ -525,6 +518,12 @@
 		67ABEB8E1B45469800E8C1ED /* PayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 67ABEB7B1B45469800E8C1ED /* PayTool.m */; };
 		67F1F8601B462CF500CAE960 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1F85D1B462CF500CAE960 /* CommonUtil.m */; };
 		67F1F8611B462CF500CAE960 /* WXPayClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1F85F1B462CF500CAE960 /* WXPayClient.m */; };
+		AAD811061B998666008521AC /* HTProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD810FC1B998666008521AC /* HTProgressView.m */; };
+		AAD811071B998666008521AC /* HTPullProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD810FE1B998666008521AC /* HTPullProgressView.m */; };
+		AAD811081B998666008521AC /* HTPullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD811001B998666008521AC /* HTPullToRefreshView.m */; };
+		AAD811091B998666008521AC /* UIScrollView+HTInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD811021B998666008521AC /* UIScrollView+HTInfiniteScrolling.m */; };
+		AAD8110A1B998666008521AC /* UIScrollView+HTPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD811041B998666008521AC /* UIScrollView+HTPullToRefresh.m */; };
+		AAD8110D1B99920E008521AC /* UIColor+HTColors.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD8110C1B99920E008521AC /* UIColor+HTColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1378,18 +1377,6 @@
 		6798B08C1B44D1B600B1D366 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		6798B08D1B44D1B600B1D366 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		6798B08E1B44D1B600B1D366 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		67ABE9041B4518B600E8C1ED /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
-		67ABE9051B4518B600E8C1ED /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
-		67ABE9061B4518B600E8C1ED /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
-		67ABE9071B4518B600E8C1ED /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
-		67ABE9081B4518B600E8C1ED /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
-		67ABE9091B4518B600E8C1ED /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
-		67ABE90A1B4518B600E8C1ED /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
-		67ABE90B1B4518B600E8C1ED /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
-		67ABE90C1B4518B600E8C1ED /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
-		67ABE90D1B4518B600E8C1ED /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
-		67ABE9131B451B1900E8C1ED /* QNBaseTabbleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNBaseTabbleViewController.m; sourceTree = "<group>"; };
-		67ABE9141B451B1900E8C1ED /* QNBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNBaseTableViewController.h; sourceTree = "<group>"; };
 		67ABEB141B45469700E8C1ED /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		67ABEB151B45469700E8C1ED /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		67ABEB161B45469700E8C1ED /* APAuthV2Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAuthV2Info.h; sourceTree = "<group>"; };
@@ -1499,6 +1486,18 @@
 		67F1F85F1B462CF500CAE960 /* WXPayClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WXPayClient.m; path = ../AliPaySdk/WXPayClient.m; sourceTree = "<group>"; };
 		9A2B20E622870057F7D03014 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9D24BE13D3D421C71578292 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AAD810FB1B998666008521AC /* HTProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTProgressView.h; sourceTree = "<group>"; };
+		AAD810FC1B998666008521AC /* HTProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTProgressView.m; sourceTree = "<group>"; };
+		AAD810FD1B998666008521AC /* HTPullProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTPullProgressView.h; sourceTree = "<group>"; };
+		AAD810FE1B998666008521AC /* HTPullProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTPullProgressView.m; sourceTree = "<group>"; };
+		AAD810FF1B998666008521AC /* HTPullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTPullToRefreshView.h; sourceTree = "<group>"; };
+		AAD811001B998666008521AC /* HTPullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTPullToRefreshView.m; sourceTree = "<group>"; };
+		AAD811011B998666008521AC /* UIScrollView+HTInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HTInfiniteScrolling.h"; sourceTree = "<group>"; };
+		AAD811021B998666008521AC /* UIScrollView+HTInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HTInfiniteScrolling.m"; sourceTree = "<group>"; };
+		AAD811031B998666008521AC /* UIScrollView+HTPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HTPullToRefresh.h"; sourceTree = "<group>"; };
+		AAD811041B998666008521AC /* UIScrollView+HTPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HTPullToRefresh.m"; sourceTree = "<group>"; };
+		AAD8110B1B99920E008521AC /* UIColor+HTColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HTColors.h"; sourceTree = "<group>"; };
+		AAD8110C1B99920E008521AC /* UIColor+HTColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HTColors.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1514,7 +1513,6 @@
 				672424CD1B4A27A100FB907D /* libsqlite3.dylib in Frameworks */,
 				672424CB1B4A274E00FB907D /* MobileCoreServices.framework in Frameworks */,
 				672424C91B4A274500FB907D /* CFNetwork.framework in Frameworks */,
-				674DE0871B43F57000762B69 /* libPods-Reachability.a in Frameworks */,
 				67242D811B4A505F00FB907D /* libMobClickLibrary.a in Frameworks */,
 				674DE08A1B43F57000762B69 /* libPods.a in Frameworks */,
 				672424C61B4A272300FB907D /* libEaseMobClientSDKLite.a in Frameworks */,
@@ -1644,11 +1642,11 @@
 		6700E6261B423E6E00A0FA15 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				AAD810F81B998666008521AC /* PullAndRefresh */,
 				6785BD681B4BC7F50026926B /* StartPages */,
 				67242B1E1B4A505E00FB907D /* ChatDemo-UI2.0 */,
 				672424591B4A272300FB907D /* EaseMobSDK */,
 				67ABEB121B45469700E8C1ED /* PayLib */,
-				67ABE9031B4518B600E8C1ED /* MJRefresh */,
 				6798AF9D1B44D1B500B1D366 /* Aspects */,
 				6798AFA21B44D1B500B1D366 /* OpenUDID */,
 				6798AFAB1B44D1B600B1D366 /* ReactiveCocoa */,
@@ -3368,25 +3366,6 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		67ABE9031B4518B600E8C1ED /* MJRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				67ABE9141B451B1900E8C1ED /* QNBaseTableViewController.h */,
-				67ABE9131B451B1900E8C1ED /* QNBaseTabbleViewController.m */,
-				67ABE9041B4518B600E8C1ED /* MJRefresh.bundle */,
-				67ABE9051B4518B600E8C1ED /* MJRefresh.h */,
-				67ABE9061B4518B600E8C1ED /* MJRefreshBaseView.h */,
-				67ABE9071B4518B600E8C1ED /* MJRefreshBaseView.m */,
-				67ABE9081B4518B600E8C1ED /* MJRefreshConst.h */,
-				67ABE9091B4518B600E8C1ED /* MJRefreshConst.m */,
-				67ABE90A1B4518B600E8C1ED /* MJRefreshFooterView.h */,
-				67ABE90B1B4518B600E8C1ED /* MJRefreshFooterView.m */,
-				67ABE90C1B4518B600E8C1ED /* MJRefreshHeaderView.h */,
-				67ABE90D1B4518B600E8C1ED /* MJRefreshHeaderView.m */,
-			);
-			path = MJRefresh;
-			sourceTree = "<group>";
-		};
 		67ABEB121B45469700E8C1ED /* PayLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -3530,6 +3509,25 @@
 				67F1F85F1B462CF500CAE960 /* WXPayClient.m */,
 			);
 			path = WeiChatPaySDK;
+			sourceTree = "<group>";
+		};
+		AAD810F81B998666008521AC /* PullAndRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				AAD8110B1B99920E008521AC /* UIColor+HTColors.h */,
+				AAD8110C1B99920E008521AC /* UIColor+HTColors.m */,
+				AAD810FB1B998666008521AC /* HTProgressView.h */,
+				AAD810FC1B998666008521AC /* HTProgressView.m */,
+				AAD810FD1B998666008521AC /* HTPullProgressView.h */,
+				AAD810FE1B998666008521AC /* HTPullProgressView.m */,
+				AAD810FF1B998666008521AC /* HTPullToRefreshView.h */,
+				AAD811001B998666008521AC /* HTPullToRefreshView.m */,
+				AAD811011B998666008521AC /* UIScrollView+HTInfiniteScrolling.h */,
+				AAD811021B998666008521AC /* UIScrollView+HTInfiniteScrolling.m */,
+				AAD811031B998666008521AC /* UIScrollView+HTPullToRefresh.h */,
+				AAD811041B998666008521AC /* UIScrollView+HTPullToRefresh.m */,
+			);
+			path = PullAndRefresh;
 			sourceTree = "<group>";
 		};
 		C98FBB22B2C5D879F244AE22 /* Frameworks */ = {
@@ -3749,7 +3747,6 @@
 				67242E6D1B4A505F00FB907D /* chat_sender_audio_playing_002@2x.png in Resources */,
 				6700E5F51B4238DA00A0FA15 /* LaunchScreen.xib in Resources */,
 				67242DEF1B4A505F00FB907D /* VoiceSearchFeedback005.png in Resources */,
-				67ABE90E1B4518B600E8C1ED /* MJRefresh.bundle in Resources */,
 				67242DE51B4A505F00FB907D /* chatFire_audioPlaying3.png in Resources */,
 				67242E821B4A505F00FB907D /* group_participant_add@2x.png in Resources */,
 				67242E441B4A505F00FB907D /* chatBar_colorMore_audioCallSelected@2x.png in Resources */,
@@ -3869,7 +3866,6 @@
 				67242D871B4A505F00FB907D /* NSDate+Category.m in Sources */,
 				674DE0691B43C34200762B69 /* StringExtension.swift in Sources */,
 				67242D841B4A505F00FB907D /* EMVoiceConverter.mm in Sources */,
-				67ABE90F1B4518B600E8C1ED /* MJRefreshBaseView.m in Sources */,
 				67242D771B4A505F00FB907D /* PSTGridLayoutItem.m in Sources */,
 				67242DCF1B4A505F00FB907D /* EMChooseViewController.m in Sources */,
 				674DE05D1B43BEC800762B69 /* QNInterceptor.swift in Sources */,
@@ -3930,7 +3926,6 @@
 				67242D941B4A505F00FB907D /* ChatListCell.m in Sources */,
 				6798B0F11B44D1B600B1D366 /* UITextField+RACSignalSupport.m in Sources */,
 				6798B0E71B44D1B600B1D366 /* UIDatePicker+RACSignalSupport.m in Sources */,
-				67ABE9151B451B1900E8C1ED /* QNBaseTabbleViewController.m in Sources */,
 				6798B0971B44D1B600B1D366 /* LICENSE.md in Sources */,
 				67242DCB1B4A505F00FB907D /* EMSearchBar.m in Sources */,
 				6700E6491B4275FB00A0FA15 /* Download.swift in Sources */,
@@ -3947,6 +3942,7 @@
 				67242D701B4A505F00FB907D /* PSTCollectionViewController.m in Sources */,
 				67242DAB1B4A505F00FB907D /* MessageReadManager.m in Sources */,
 				6798B0CF1B44D1B600B1D366 /* RACSignal+Operations.m in Sources */,
+				AAD811071B998666008521AC /* HTPullProgressView.m in Sources */,
 				6798B0BE1B44D1B600B1D366 /* RACEvent.m in Sources */,
 				67242DAE1B4A505F00FB907D /* ContactView.m in Sources */,
 				67242D951B4A505F00FB907D /* ChatListViewController.m in Sources */,
@@ -3982,6 +3978,7 @@
 				6700E6101B423AD200A0FA15 /* QNWebViewController.swift in Sources */,
 				67242D6C1B4A505F00FB907D /* UIView+EMWebCacheOperation.m in Sources */,
 				6700E6371B426C2800A0FA15 /* FindViewController.swift in Sources */,
+				AAD8110A1B998666008521AC /* UIScrollView+HTPullToRefresh.m in Sources */,
 				6700E5E91B4238DA00A0FA15 /* AppDelegate.swift in Sources */,
 				6798B0DD1B44D1B600B1D366 /* RACUnarySequence.m in Sources */,
 				6798B0B71B44D1B600B1D366 /* RACDisposable.m in Sources */,
@@ -4039,7 +4036,6 @@
 				6700E6151B423B1C00A0FA15 /* Constents.swift in Sources */,
 				67242D631B4A505F00FB907D /* EMSDWebImagePrefetcher.m in Sources */,
 				67242D9E1B4A505F00FB907D /* DXChatBarMoreView.m in Sources */,
-				67ABE9121B4518B600E8C1ED /* MJRefreshHeaderView.m in Sources */,
 				6798B0C81B44D1B600B1D366 /* RACQueueScheduler.m in Sources */,
 				67242D611B4A505F00FB907D /* EMSDWebImageDownloaderOperation.m in Sources */,
 				6798B1001B44D1B600B1D366 /* UIImage+MultiFormat.m in Sources */,
@@ -4062,7 +4058,6 @@
 				6798B0AC1B44D1B600B1D366 /* NSString+RACSupport.m in Sources */,
 				6798B0921B44D1B600B1D366 /* OpenUDID.m in Sources */,
 				67242D791B4A505F00FB907D /* PSTGridLayoutSection.m in Sources */,
-				67ABE9111B4518B600E8C1ED /* MJRefreshFooterView.m in Sources */,
 				6798B0B61B44D1B600B1D366 /* RACDelegateProxy.m in Sources */,
 				67242DB31B4A505F00FB907D /* GroupSubjectChangingViewController.m in Sources */,
 				67242D4C1B4A505F00FB907D /* EMCDDeviceManager+ProximitySensor.m in Sources */,
@@ -4071,7 +4066,6 @@
 				6700E64D1B4275FB00A0FA15 /* Request.swift in Sources */,
 				67242D581B4A505F00FB907D /* MWPhotoBrowser.m in Sources */,
 				67242DA41B4A505F00FB907D /* EMChatTextBubbleView.m in Sources */,
-				67ABE9101B4518B600E8C1ED /* MJRefreshConst.m in Sources */,
 				67ABEB891B45469800E8C1ED /* MD5DataSigner.m in Sources */,
 				6798B0DC1B44D1B600B1D366 /* RACTupleSequence.m in Sources */,
 				6700E6631B427DB800A0FA15 /* QNShareSDKTools.m in Sources */,
@@ -4082,6 +4076,7 @@
 				6798B0E01B44D1B600B1D366 /* UIActionSheet+RACSignalSupport.m in Sources */,
 				67242DB51B4A505F00FB907D /* PublicGroupListViewController.m in Sources */,
 				67242D6B1B4A505F00FB907D /* UIImageView+EMWebCache.m in Sources */,
+				AAD811091B998666008521AC /* UIScrollView+HTInfiniteScrolling.m in Sources */,
 				6798B0DF1B44D1B600B1D366 /* RACValueTransformer.m in Sources */,
 				6798B09E1B44D1B600B1D366 /* NSFileHandle+RACSupport.m in Sources */,
 				67242DBA1B4A505F00FB907D /* ContactsViewController.m in Sources */,
@@ -4095,6 +4090,7 @@
 				6798B0C41B44D1B600B1D366 /* RACKVOTrampoline.m in Sources */,
 				6798B0CB1B44D1B600B1D366 /* RACScheduler.m in Sources */,
 				6700E6621B427DB800A0FA15 /* NSString+AES.m in Sources */,
+				AAD8110D1B99920E008521AC /* UIColor+HTColors.m in Sources */,
 				6798B0B21B44D1B600B1D366 /* RACChannel.m in Sources */,
 				6798B0FE1B44D1B600B1D366 /* UIButton+WebCache.m in Sources */,
 				6798B0E21B44D1B600B1D366 /* UIBarButtonItem+RACCommandSupport.m in Sources */,
@@ -4110,6 +4106,7 @@
 				6798B0B11B44D1B600B1D366 /* RACBlockTrampoline.m in Sources */,
 				6798B0A41B44D1B600B1D366 /* NSObject+RACKVOWrapper.m in Sources */,
 				67242D661B4A505F00FB907D /* UIButton+EMWebCache.m in Sources */,
+				AAD811061B998666008521AC /* HTProgressView.m in Sources */,
 				67242D831B4A505F00FB907D /* wav.mm in Sources */,
 				6798B0C11B44D1B600B1D366 /* RACIndexSetSequence.m in Sources */,
 				6798B0F81B44D1B600B1D366 /* SDWebImageCompat.m in Sources */,
@@ -4129,6 +4126,7 @@
 				67242DBE1B4A505F00FB907D /* ApplyViewController.m in Sources */,
 				67242D6D1B4A505F00FB907D /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				6700E64E1B4275FB00A0FA15 /* ResponseSerialization.swift in Sources */,
+				AAD811081B998666008521AC /* HTPullToRefreshView.m in Sources */,
 				67242D891B4A505F00FB907D /* NSString+Valid.m in Sources */,
 				67242DCD1B4A505F00FB907D /* EMRemarkImageView.m in Sources */,
 				6700E6351B426C1C00A0FA15 /* MessageViewController.swift in Sources */,
@@ -4275,7 +4273,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/PayLib/AliPaySdk",
 				);
 				INFOPLIST_FILE = MSBPhone/Info.plist;
@@ -4322,7 +4319,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/PayLib/AliPaySdk",
 				);
 				INFOPLIST_FILE = MSBPhone/Info.plist;

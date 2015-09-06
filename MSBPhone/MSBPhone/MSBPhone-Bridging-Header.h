@@ -16,13 +16,10 @@
 #import "PayTool.h"
 #import "WXApi.h"
 
-//基类
-#import "QNBaseTableViewController.h"
-
 //和三方库
 #import "ReactiveCocoa.h"
 #import "Aspects.h"
-#import "Reachability.h"        // 判断网络状况
+//#import "Reachability.h"        // 判断网络状况
 
 // 分享ShareSDK
 #import "QNShareSDKTools.h"

@@ -298,11 +298,11 @@ extension QNTool {
 //MARK:- 判断当前网络状况
 extension QNTool {
     //网络连接状态
-    class func netWorkStatus() -> NetworkStatus {
-        let netWorkStatic = Reachability.reachabilityForInternetConnection()
-        netWorkStatic.startNotifier()
-        return netWorkStatic.currentReachabilityStatus()
-    }
+//    class func netWorkStatus() -> NetworkStatus {
+//        let netWorkStatic = Reachability.reachabilityForInternetConnection()
+//        netWorkStatic.startNotifier()
+//        return netWorkStatic.currentReachabilityStatus()
+//    }
 }
 
 //MARK:- 自动提示编辑昵称

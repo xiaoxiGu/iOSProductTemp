@@ -1,2 +1,6 @@
-platform :ios, "7.0"
-pod "Reachability"
+platform :ios, '7.0'
+
+pod 'Reachability'
+pod 'PureLayout'
+pod 'ColorUtils'
+pod 'libextobjc'
