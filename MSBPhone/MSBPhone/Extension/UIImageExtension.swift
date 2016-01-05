@@ -13,9 +13,9 @@ extension UIImage {
     /**
     创建一个颜色图片
     
-    :param: color 颜色
-    :param: size  如果不设置，则为  ｛2， 2｝
-    :returns: 返回图片，图片的scale为当前屏幕的scale
+    - parameter color: 颜色
+    - parameter size:  如果不设置，则为  ｛2， 2｝
+    - returns: 返回图片，图片的scale为当前屏幕的scale
     */
     class func colorImage(color: UIColor) -> UIImage {
         return self.colorImage(color, size: CGSize(width: 2, height: 2))
@@ -23,10 +23,10 @@ extension UIImage {
     class func colorImage(color: UIColor, size: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
-        UIRectFillUsingBlendMode(CGRectMake(0, 0, size.width, size.height), kCGBlendModeXOR)
+        UIRectFillUsingBlendMode(CGRectMake(0, 0, size.width, size.height), CGBlendMode.XOR)
         let cgImage = CGBitmapContextCreateImage(UIGraphicsGetCurrentContext())
         UIGraphicsEndImageContext()
-        return UIImage(CGImage: cgImage)!.stretchableImageWithLeftCapWidth(1, topCapHeight: 1)
+        return UIImage(CGImage: cgImage!).stretchableImageWithLeftCapWidth(1, topCapHeight: 1)
     }
 }
 
@@ -37,7 +37,7 @@ extension UIImage {
         let context = UIGraphicsGetCurrentContext()
         CGContextTranslateCTM(context, 0, self.size.height)
         CGContextScaleCTM(context, 1.0, -1.0)
-        CGContextSetBlendMode(context, kCGBlendModeNormal)
+        CGContextSetBlendMode(context, CGBlendMode.Normal)
         let rect = CGRect(origin: CGPointZero, size: self.size)
         CGContextClipToMask(context, rect, self.CGImage)
         color.setFill()

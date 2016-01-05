@@ -62,8 +62,8 @@ extension UIView {
     /**
     设置BadgeValue的值和位置
     
-    :param: badgeValue 值
-    :param: center     中心点位置
+    - parameter badgeValue: 值
+    - parameter center:     中心点位置
     */
     func setBadgeValue(badgeValue: String?, center: CGPoint) {
         self.badgeValue = badgeValue

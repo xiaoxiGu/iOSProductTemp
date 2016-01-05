@@ -93,23 +93,25 @@ class QNTabBarController: UITabBarController {
         self.tabBar.translucent = false
         self.tabBar.barTintColor = UIColor.whiteColor()
         self.tabBar.tintColor = UINavigationBar.appearance().tintColor
-        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objectsAndKeys: defaultGrayColor, NSForegroundColorAttributeName, UIFont.systemFontOfSize(12), NSFontAttributeName) as [NSObject : AnyObject], forState: .Normal)
-        UITabBarItem.appearance().setTitleTextAttributes(NSDictionary(objectsAndKeys: appThemeColor, NSForegroundColorAttributeName, UIFont.systemFontOfSize(12), NSFontAttributeName) as [NSObject : AnyObject], forState: .Selected)
+//        let titlAttributesNormal = NSDictionary(dictionary: [NSForegroundColorAttributeName: defaultGrayColor, NSFontAttributeName: UIFont.systemFontOfSize(12)])
+//        UITabBarItem.appearance().setTitleTextAttributes(titlAttributesNormal, forState: .Normal)
+//        
+//        let titlAttributesSelected = NSDictionary(dictionary: [NSForegroundColorAttributeName: appThemeColor, NSFontAttributeName: UIFont.systemFontOfSize(12)])
+//        UITabBarItem.appearance().setTitleTextAttributes(titlAttributesSelected, forState: .Selected)
 
         // 图标配置
         if let itemsArray = self.tabBar.items {
             for var i=0; i<itemsArray.count; i++ {
-                if let item = itemsArray[i] as? UITabBarItem {
-                    let indexItem = IndexItem(index: i)
-                    if !indexItem.needRedDot {
-                        item.image = indexItem.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                        item.selectedImage = indexItem.selectedImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                    }else{
-                        item.image = self.imageAddDotView(indexItem.image!).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                        item.selectedImage = self.imageAddDotView(indexItem.selectedImage!).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-                    }
-                    item.title = indexItem.title
+                let item = itemsArray[i]
+                let indexItem = IndexItem(index: i)
+                if !indexItem.needRedDot {
+                    item.image = indexItem.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage = indexItem.selectedImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }else{
+                    item.image = self.imageAddDotView(indexItem.image!).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage = self.imageAddDotView(indexItem.selectedImage!).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 }
+                item.title = indexItem.title
             }
         }
         
@@ -126,7 +128,7 @@ class QNTabBarController: UITabBarController {
         imageView.addSubview(dotView)
         
         UIGraphicsBeginImageContextWithOptions(imageView.frame.size, false, 0)
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         imageView.layer.renderInContext(context)
         let imageResult = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()

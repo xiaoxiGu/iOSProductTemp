@@ -30,7 +30,7 @@ let APP_VERSION_BUILD = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBund
 // MARK:  APP 下载地址前缀
 let APP_URL_IN_ITUNES_PREFIX = "https://itunes.apple.com/cn/app/id%@?ls=1&mt=8"
 // MARK:  APP 下载地址（在iTunes中）
-let APP_URL_IN_ITUNES: String = NSString(format: APP_URL_IN_ITUNES_PREFIX, APP_ID) as! String
+let APP_URL_IN_ITUNES: String = NSString(format: APP_URL_IN_ITUNES_PREFIX, APP_ID) as String
 
 // MARK: - 屏幕高度 & 屏幕宽度
 let Screen_Height = UIScreen.mainScreen().bounds.size.height
@@ -100,8 +100,8 @@ func compareVersion(version1: String, version2: String) -> NSComparisonResult? {
     }
     
     for index in 0..<iCount {
-        let iVersion1Sub = (version1Array[index]).toInt()
-        let iVersion2Sub = (version2Array[index]).toInt()
+        let iVersion1Sub = Int((version1Array[index]))
+        let iVersion2Sub = Int((version2Array[index]))
         if iVersion1Sub != nil && iVersion2Sub != nil {
             if iVersion1Sub == iVersion2Sub {
                 continue // 相同，则去判断下一个位置

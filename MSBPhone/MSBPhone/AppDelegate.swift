@@ -18,30 +18,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //开启样式控制
-        QNInterceptor.start()
+//        QNInterceptor.start()
         //开启支付功能
-        PayTool.sharedPayTool()
+//        PayTool.sharedPayTool()
         //集成环信SDK
-        EaseMob.sharedInstance().registerSDKWithAppKey("mingshibao365#mingshibao", apnsCertName: "")
-        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        EaseMob.sharedInstance().registerSDKWithAppKey("mingshibao365#mingshibao", apnsCertName: "")
+//        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 //        EaseMob.sharedInstance().chatManager.asyncLoginWithUsername("10086", password: "123456", completion: { (array, error) -> Void in
 //            print("111")
 //        }, onQueue: nil)
         
         // 启动过渡页
-        let allowShowStartPages = !NSUserDefaults.standardUserDefaults().boolForKey(kKeyIsFirstStartApp)
-        if allowShowStartPages {
-            UIApplication.sharedApplication().statusBarHidden = true
-            let startPagesWindow = StartPagesWindow()
-            startPagesWindow.finished = { () -> Void in
-                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kKeyIsFirstStartApp)
-            }
-        }
+//        let allowShowStartPages = !NSUserDefaults.standardUserDefaults().boolForKey(kKeyIsFirstStartApp)
+//        if allowShowStartPages {
+//            UIApplication.sharedApplication().statusBarHidden = true
+//            let startPagesWindow = StartPagesWindow()
+//            startPagesWindow.finished = { () -> Void in
+//                NSUserDefaults.standardUserDefaults().setBool(true, forKey: kKeyIsFirstStartApp)
+//            }
+//        }
         
-        // 自动显示app评论框
-        if !allowShowStartPages {
+//
+//        // 自动显示app评论框
+//        if !allowShowStartPages {
             QNTool.autoShowCommentAppAlertView()
-        }
+//        }
         
         return true
     }
@@ -72,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         EaseMob.sharedInstance().applicationWillTerminate(application)
     }
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool{
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool{
         return PayTool.HandleApplicationOpenURL(url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
@@ -84,10 +85,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let msg = NSString(format: "errcode:%d",response.errCode)
             //            let alert = UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles:nil, nil)
             //            alert.show()
-            if response.errCode == WXSuccess.value{
-                print("支付成功")
+            if response.errCode == WXSuccess.rawValue{
+                print("支付成功", terminator: "")
             }else{
-                print("支付失败")
+                print("支付失败", terminator: "")
             }
         }
     }

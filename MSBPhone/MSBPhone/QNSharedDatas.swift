@@ -26,12 +26,12 @@ var g_Password: String? {
 
 //MARK: 保存账号和密码
 func saveAccountAndPassword(account: String, password: String?) {
-    saveObjectToUserDefaults(kKeyAccount, (account as NSString).encrypt(g_SecretKey))
+    saveObjectToUserDefaults(kKeyAccount, value: (account as NSString).encrypt(g_SecretKey))
     if password == nil {
         cleanPassword()
     }
     else {
-        saveObjectToUserDefaults(kKeyPassword, (password! as NSString).encrypt(g_SecretKey))
+        saveObjectToUserDefaults(kKeyPassword, value: (password! as NSString).encrypt(g_SecretKey))
     }
 }
 //MARK: 清除密码
@@ -49,7 +49,7 @@ didSet{
         removeObjectAtUserDefaults(kKeyCurrentUserIndex)
     }
     else {
-        saveObjectToUserDefaults(kKeyCurrentUserIndex, g_currentUserIndex!)
+        saveObjectToUserDefaults(kKeyCurrentUserIndex, value: g_currentUserIndex!)
     }
 }
 }
@@ -64,7 +64,7 @@ let QNNotificationMessageCountChanged = "QNNotificationMessageCountChanged"
 private let kKeyNotReadMyMessageCount = ("NotReadMyMessageCount" as NSString).encrypt(g_SecretKey)
 var g_NotReadMyMessageCount: Int = (getObjectFromUserDefaults(kKeyNotReadMyMessageCount) as? Int) ?? 0 {
 didSet {
-    saveObjectToUserDefaults(kKeyNotReadMyMessageCount, g_NotReadMyMessageCount)
+    saveObjectToUserDefaults(kKeyNotReadMyMessageCount, value: g_NotReadMyMessageCount)
     NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationMessageCountChanged, object: nil)
 }
 }
@@ -73,7 +73,7 @@ didSet {
 private let kKeyNotReadSuggestCount = ("NotReadSuggestCount" as NSString).encrypt(g_SecretKey)
 var g_NotReadSuggestCount: Int = (getObjectFromUserDefaults(kKeyNotReadSuggestCount) as? Int) ?? 0 {
 didSet {
-    saveObjectToUserDefaults(kKeyNotReadSuggestCount, g_NotReadSuggestCount)
+    saveObjectToUserDefaults(kKeyNotReadSuggestCount, value: g_NotReadSuggestCount)
     NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationMessageCountChanged, object: nil)
 }
 }
@@ -82,7 +82,7 @@ didSet {
 private let kKeyNotReadMonthlyReportCount = ("NotReadMonthlyReportCount" as NSString).encrypt(g_SecretKey)
 var g_NotReadMonthlyReportCount: Int = (getObjectFromUserDefaults(kKeyNotReadMonthlyReportCount) as? Int) ?? 0 {
 didSet {
-    saveObjectToUserDefaults(kKeyNotReadMonthlyReportCount, g_NotReadMonthlyReportCount)
+    saveObjectToUserDefaults(kKeyNotReadMonthlyReportCount, value: g_NotReadMonthlyReportCount)
     NSNotificationCenter.defaultCenter().postNotificationName(QNNotificationMessageCountChanged, object: nil)
 }
 }
@@ -94,7 +94,7 @@ private let kKeyHeadImageUrl = ("HeadImageUrl" as NSString).encrypt(g_SecretKey)
 var g_HeadImageUrl: String? = getObjectFromUserDefaults(kKeyHeadImageUrl) as? String {
 didSet {
     if g_HeadImageUrl != nil {
-        saveObjectToUserDefaults(kKeyHeadImageUrl, g_HeadImageUrl!)
+        saveObjectToUserDefaults(kKeyHeadImageUrl, value: g_HeadImageUrl!)
     }
     else {
         removeObjectAtUserDefaults(kKeyHeadImageUrl)
@@ -107,7 +107,7 @@ private let kKeyNickName = ("NickName" as NSString).encrypt(g_SecretKey)
 var g_NickName: String? = getObjectFromUserDefaults(kKeyNickName) as? String {
 didSet {
     if g_NickName != nil {
-        saveObjectToUserDefaults(kKeyNickName, g_NickName!)
+        saveObjectToUserDefaults(kKeyNickName, value: g_NickName!)
     }
     else {
         removeObjectAtUserDefaults(kKeyNickName)
@@ -133,7 +133,7 @@ private let kKeyDeviceToken = ("DeviceToken" as NSString).encrypt(g_SecretKey)
 var g_deviceToken: String? = getObjectFromUserDefaults(kKeyDeviceToken) as? String {
 didSet {
     if g_deviceToken != nil {
-        saveObjectToUserDefaults(kKeyDeviceToken, g_deviceToken!)
+        saveObjectToUserDefaults(kKeyDeviceToken, value: g_deviceToken!)
     }
     else {
         removeObjectAtUserDefaults(kKeyDeviceToken)

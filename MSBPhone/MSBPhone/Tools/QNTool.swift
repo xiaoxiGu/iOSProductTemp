@@ -25,11 +25,11 @@ private let kKeyVersionOnLastOpen = ("VersionOnLastOpen" as NSString).encrypt(g_
 extension QNTool {
     class func update() {
         let versionOnLastOpen = (getObjectFromUserDefaults(kKeyVersionOnLastOpen) as? NSString)?.decrypt(g_SecretKey)
-        if versionOnLastOpen == nil || compareVersion(versionOnLastOpen!, APP_VERSION) != NSComparisonResult.OrderedSame { // 当没有设置最后一次打开的版本号，或者最后一次打开的版本号比当前版本号低的情况下要做更新操作
+        if versionOnLastOpen == nil || compareVersion(versionOnLastOpen!, version2: APP_VERSION) != NSComparisonResult.OrderedSame { // 当没有设置最后一次打开的版本号，或者最后一次打开的版本号比当前版本号低的情况下要做更新操作
             
             // 当版本从低于或者等于2.0的时候，做下面的数据迁移
-            if versionOnLastOpen == nil || compareVersion(versionOnLastOpen!, "2.0") != NSComparisonResult.OrderedDescending {
-                do { // 用户账号数据迁移，从老数据中获取账号，然后重新登录，需要用户设置密码
+            if versionOnLastOpen == nil || compareVersion(versionOnLastOpen!, version2: "2.0") != NSComparisonResult.OrderedDescending {
+                repeat { // 用户账号数据迁移，从老数据中获取账号，然后重新登录，需要用户设置密码
                     let key = "GROUP"
 //                    if let groupDictionary = getObjectFromUserDefaults(key) as? NSDictionary, let group = QN_Group(groupDictionary) {
 //                        saveAccountAndPassword(group.groupId, nil)
@@ -54,7 +54,7 @@ extension QNTool {
 //            } while (false)
             
             // 所有操作完成后，更新最低版本号
-            saveObjectToUserDefaults(kKeyVersionOnLastOpen, (APP_VERSION as NSString).encrypt(g_SecretKey))
+            saveObjectToUserDefaults(kKeyVersionOnLastOpen, value: (APP_VERSION as NSString).encrypt(g_SecretKey))
         }
     }
 }
@@ -69,29 +69,29 @@ extension QNTool {
     /**
     //MARK: 弹出会自动消失的提示框
     
-    :param: message    提示内容
-    :param: completion 提示框消失后的回调
+    - parameter message:    提示内容
+    - parameter completion: 提示框消失后的回调
     */
     class func showPromptView(message: String = "服务升级中，请耐心等待！", _ completion: (()->Void)? = nil) {
-        lyShowPromptView(message, completion)
+//        lyShowPromptView(message, completion)
     }
     
     /**
     //MARK: 弹出进度提示框
     
-    :param: message         提示内容
-    :param: inView          容器，如果设置为nil，会放在keyWindow上
-    :param: timeoutInterval 超时隐藏，如果设置为nil，超时时间是3min
+    - parameter message:         提示内容
+    - parameter inView:          容器，如果设置为nil，会放在keyWindow上
+    - parameter timeoutInterval: 超时隐藏，如果设置为nil，超时时间是3min
     */
     class func showActivityView(message: String?, inView: UIView? = nil, _ timeoutInterval: NSTimeInterval? = nil) {
-        lyShowActivityView(message, inView: inView, timeoutInterval)
+//        lyShowActivityView(message, inView: inView, timeoutInterval)
     }
     
     /**
     //MARK: 隐藏进度提示框
     */
     class func hiddenActivityView() {
-        lyHiddenActivityView()
+//        lyHiddenActivityView()
     }
     
     /**
@@ -99,21 +99,21 @@ extension QNTool {
     
     优先显示服务器返回的错误信息，如果没有，则显示网络层返回的错误信息，如果在没有，则显示默认的错误提示
     
-    :param: dictionary 服务器返回的Dic
-    :param: error      网络层返回的error
-    :param: errorMsg   服务器返回的错误信息
+    - parameter dictionary: 服务器返回的Dic
+    - parameter error:      网络层返回的error
+    - parameter errorMsg:   服务器返回的错误信息
     */
     class func showErrorPromptView(dictionary: NSDictionary?, error: NSError?, errorMsg: String? = nil) {
         if errorMsg != nil {
-            QNTool.showPromptView(message: errorMsg!); return
+            QNTool.showPromptView(errorMsg!); return
         }
         
         if let errorMsg = dictionary?["errorMsg"] as? String {
-            QNTool.showPromptView(message: errorMsg); return
+            QNTool.showPromptView(errorMsg); return
         }
         
         if error != nil && error!.domain.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
-            QNTool.showPromptView(message: "网络异常，请稍后重试！"); return
+            QNTool.showPromptView("网络异常，请稍后重试！"); return
         }
         
         QNTool.showPromptView()
@@ -183,7 +183,7 @@ extension QNTool {
     /**
     //MARK: 转场动画过渡
     
-    :param: vc 将要打开的ViewController
+    - parameter vc: 将要打开的ViewController
     */
     class func enterRootViewController(vc: UIViewController, animated: Bool = true) {
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
@@ -220,8 +220,8 @@ extension QNTool {
     //MARK: 进入登陆的控制器
     */
     class func enterLoginViewController() {
-        let vc = (UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController() as? UIViewController)!
-        QNTool.enterRootViewController(vc)
+        let vc = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+        QNTool.enterRootViewController(vc!)
     }
     
     
@@ -231,7 +231,7 @@ extension QNTool {
 extension QNTool {
     class func imageFromView(view: UIView, frame: CGRect) -> UIImageView {
         UIGraphicsBeginImageContext(view.frame.size)
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         CGContextSaveGState(context)
         UIRectClip(frame)
         view.layer.renderInContext(context)
@@ -246,7 +246,7 @@ extension QNTool {
 //MARK:- 弹出APP评论框
 //NOTE: 如果用户去评论了将不会弹出评论页面
 private let kKeyTheRemainingNumberShowComment = ("TheRemainingNumberShowComment" as NSString).encrypt(g_SecretKey) // 显示评论剩余次数
-private let theRemainingNumberShowCommentDefault = 10    // 设置成0，表示每次都会弹出评论提示，直到用户去评论，或者用户残忍拒绝。  设置成2，表示每相隔启动2次会弹出提示
+private let theRemainingNumberShowCommentDefault = 0    // 设置成0，表示每次都会弹出评论提示，直到用户去评论，或者用户残忍拒绝。  设置成2，表示每相隔启动2次会弹出提示
 private var theRemainingNumberShowComment: Int? {
 get {
     return getObjectFromUserDefaults(kKeyTheRemainingNumberShowComment) as? Int ?? theRemainingNumberShowCommentDefault // 显示评论剩余次数，当该值 = -1的时候，表示已经评论过了，就不会在给出评论了,
@@ -256,27 +256,22 @@ set {
         removeObjectAtUserDefaults(kKeyTheRemainingNumberShowComment)
     }
     else {
-        saveObjectToUserDefaults(kKeyTheRemainingNumberShowComment, newValue!)
+        saveObjectToUserDefaults(kKeyTheRemainingNumberShowComment, value: newValue!)
     }
 }
 }
 extension QNTool {
     class func showCommentAppAlertView() {
-        let commentAlertView = UIAlertView(title: "程序员牺牲陪女神的时间，加班加点做出的产品，你狠心不给个评分吗？", message: nil, delegate: nil, cancelButtonTitle: "狠心拒绝")
-        commentAlertView.addButtonWithTitle("去评分")
-        commentAlertView.rac_buttonClickedSignal().subscribeNext({(indexNumber) -> Void in
-            if let index = indexNumber as? Int {
-                switch index {
-                case 0: // 残忍拒绝
-                    theRemainingNumberShowComment = nil
-                case 1: // 去评论
-                    theRemainingNumberShowComment = -1
-                    UIApplication.sharedApplication().openURL(NSURL(string: APP_URL_IN_ITUNES)!)
-                default: break
-                }
-            }
-        })
-        commentAlertView.show()
+//        UIAlertView.bk_showAlertViewWithTitle("程序员牺牲陪女神的时间，加班加点做出的产品，你狠心不给个评分吗？", message: nil, cancelButtonTitle: "狠心拒绝", otherButtonTitles: ["去评分"]) { (alertView, index) -> Void in
+//            switch index {
+//            case 0: // 残忍拒绝
+//                theRemainingNumberShowComment = nil
+//            case 1: // 去评论
+//                theRemainingNumberShowComment = -1
+//                UIApplication.sharedApplication().openURL(NSURL(string: APP_URL_IN_ITUNES)!)
+//            default: break
+//            }
+//        }
     }
     
     // 自动显示弹出App评论框
@@ -309,18 +304,7 @@ extension QNTool {
 extension QNTool {
     class func autoShowEditNickNameView() {
         if g_NickName == nil {
-            let alert = UIAlertView(title: nil, message: "为了方便您的家人识别您，请输入昵称", delegate: nil, cancelButtonTitle: "取消")
-            alert.addButtonWithTitle("确认")
-            alert.alertViewStyle = .PlainTextInput
-            alert.rac_buttonClickedSignal().subscribeNext { (index) -> Void in
-                if let indexInt = index as? Int, let text = alert.textFieldAtIndex(0)?.text where indexInt == 1 {
 
-                }
-            }
-            alert.show()
-            
-            alert.textFieldAtIndex(0)?.placeholder = "昵称"
-            alert.textFieldAtIndex(0)?.returnKeyType = .Done
         }
     }
 }
@@ -332,21 +316,21 @@ extension QNTool: UIGestureRecognizerDelegate {
     /**
     让 Navigation 支持右滑返回
     
-    :param: navigationController 需要支持的 UINavigationController 对象
+    - parameter navigationController: 需要支持的 UINavigationController 对象
     */
     class func addInteractive(navigationController: UINavigationController?) {
-        navigationController?.interactivePopGestureRecognizer.enabled = true
-        navigationController?.interactivePopGestureRecognizer.delegate = qnToolInstance
+        navigationController?.interactivePopGestureRecognizer!.enabled = true
+        navigationController?.interactivePopGestureRecognizer!.delegate = qnToolInstance
     }
     
     /**
     移除 Navigation 右滑返回
     
-    :param: navigationController 需要支持的 UINavigationController 对象
+    - parameter navigationController: 需要支持的 UINavigationController 对象
     */
     class func removeInteractive(navigationController: UINavigationController?) {
-        navigationController?.interactivePopGestureRecognizer.enabled = false
-        navigationController?.interactivePopGestureRecognizer.delegate = nil
+        navigationController?.interactivePopGestureRecognizer!.enabled = false
+        navigationController?.interactivePopGestureRecognizer!.delegate = nil
     }
     
     // MARK: UIGestureRecognizerDelegate

@@ -46,20 +46,20 @@ class QNInterceptor : NSObject {
         
         //MARK:- UIViewController
         //MARK: 拦截 UIViewController 的 loadView() 方法
-        do {
-            let block : @objc_block (aspectInfo: AspectInfo) -> Void = { [weak self](aspectInfo: AspectInfo) -> Void in
-                if let strongSelf = self, let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
-                    // 设置统一的背景色
-                    viewController.view.backgroundColor = defaultBackgroundColor
-                    // 修改基础配置
-                    viewController.edgesForExtendedLayout = UIRectEdge.None
-                    // 全部设置成返回按钮，在有导航栏，并且不是导航栏的rootViewController
-                    if let rootViewController = viewController.navigationController?.viewControllers.first as? UIViewController where rootViewController != viewController {                        viewController.configBackButton()
-                    }
+        let block : @convention(block) (aspectInfo: AspectInfo) -> Void = { (aspectInfo: AspectInfo) -> Void in
+            if let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
+                // 设置统一的背景色
+                viewController.view.backgroundColor = defaultBackgroundColor
+                // 修改基础配置
+                viewController.edgesForExtendedLayout = UIRectEdge.None
+                // 全部设置成返回按钮，在有导航栏，并且不是导航栏的rootViewController
+                let rootViewController = viewController.navigationController?.viewControllers.first
+                if rootViewController != viewController {
+                    viewController.configBackButton()
                 }
             }
-            UIViewController.aspect_hookSelector(Selector("loadView"), withOptions: AspectOptions.PositionAfter, usingBlock: unsafeBitCast(block, AnyObject.self), error: nil)
-        } while(false)
+        }
+        try! UIViewController.aspect_hookSelector(Selector("loadView"), withOptions: AspectOptions.PositionAfter, usingBlock: unsafeBitCast(block, AnyObject.self))
         
         //MARK: 拦截 UIViewController 的 viewDidLoad() 方法
 //        do { // 目前没有操作，所以不需要拦截
@@ -72,37 +72,35 @@ class QNInterceptor : NSObject {
 //        } while(false)
         
         //MARK: 拦截 UIViewController 的 viewWillAppear(animated: Bool) 方法
-        do {
-            let block : @objc_block (aspectInfo: AspectInfo) -> Void = { [weak self](aspectInfo: AspectInfo) -> Void in
-                if let strongSelf = self, let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
-                    if viewController.navigationController != nil {
-                        // 修改导航栏的显示和隐藏
-                        if viewController is QNInterceptorNavigationBarShowProtocol {
-                            viewController.navigationController?.setNavigationBarHidden(false, animated: true)
-                        }
-                        else if viewController is QNInterceptorNavigationBarHiddenProtocol {
-                            viewController.navigationController?.setNavigationBarHidden(true, animated: true)
-                        }
-                        
-                        // 修改导航栏&状态栏的样式
-                        UIApplication.sharedApplication().statusBarHidden = false
-                        if viewController.navigationController!.viewControllers.count == 1 {
-                            UIApplication.sharedApplication().statusBarStyle = .LightContent
-                            viewController.navigationController?.navigationBar.barTintColor = appThemeColor
-                            viewController.navigationController?.navigationBar.tintColor = navigationTextColor
-                            viewController.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
-                        }
-                        else {
-                            UIApplication.sharedApplication().statusBarStyle = .Default
-                            viewController.navigationController?.navigationBar.barTintColor = navigationTextColor
-                            viewController.navigationController?.navigationBar.tintColor = appThemeColor
-                            viewController.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: appThemeColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
-                        }
+        let block1 : @convention(block) (aspectInfo: AspectInfo) -> Void = { (aspectInfo: AspectInfo) -> Void in
+            if let viewController = aspectInfo.instance() as? UIViewController where viewController is QNInterceptorProtocol {
+                if viewController.navigationController != nil {
+                    // 修改导航栏的显示和隐藏
+                    if viewController is QNInterceptorNavigationBarShowProtocol {
+                        viewController.navigationController?.setNavigationBarHidden(false, animated: true)
+                    }
+                    else if viewController is QNInterceptorNavigationBarHiddenProtocol {
+                        viewController.navigationController?.setNavigationBarHidden(true, animated: true)
+                    }
+                    
+                    // 修改导航栏&状态栏的样式
+                    UIApplication.sharedApplication().statusBarHidden = false
+                    if viewController.navigationController!.viewControllers.count == 1 {
+                        UIApplication.sharedApplication().statusBarStyle = .LightContent
+                        viewController.navigationController?.navigationBar.barTintColor = appThemeColor
+                        viewController.navigationController?.navigationBar.tintColor = navigationTextColor
+                        viewController.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: navigationTextColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
+                    }
+                    else {
+                        UIApplication.sharedApplication().statusBarStyle = .Default
+                        viewController.navigationController?.navigationBar.barTintColor = navigationTextColor
+                        viewController.navigationController?.navigationBar.tintColor = appThemeColor
+                        viewController.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: appThemeColor, NSFontAttributeName: UIFont.systemFontOfSize(18)]
                     }
                 }
             }
-            UIViewController.aspect_hookSelector(Selector("viewWillAppear:"), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block, AnyObject.self), error: nil)
-        } while(false)
+        }
+        try! UIViewController.aspect_hookSelector(Selector("viewWillAppear:"), withOptions: AspectOptions.PositionBefore, usingBlock: unsafeBitCast(block1, AnyObject.self))
         
         //MARK: 拦截 UIViewController 的 deinit 方法，  可测试类是否被释放
 //        do {

@@ -26,7 +26,7 @@ class QNWebViewController : UIViewController, UIWebViewDelegate, QNInterceptorPr
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -40,7 +40,7 @@ class QNWebViewController : UIViewController, UIWebViewDelegate, QNInterceptorPr
         self.webView = UIWebView(frame:self.view.bounds)
         self.webView!.backgroundColor = UIColor(white: 229/255.0, alpha: 1.0)
         self.webView!.opaque = false
-        self.webView!.autoresizingMask = .FlexibleTopMargin | .FlexibleLeftMargin | .FlexibleRightMargin | .FlexibleBottomMargin | .FlexibleWidth | .FlexibleHeight;
+        self.webView!.autoresizingMask = [.FlexibleTopMargin, .FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleBottomMargin, .FlexibleWidth, .FlexibleHeight];
         self.webView!.delegate = self;
         self.view.addSubview(self.webView!)
         

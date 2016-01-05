@@ -19,9 +19,9 @@ extension UIViewController {
     //MARK: 从 storyboardName.storyboard 初始化一个当前类
     // 从 storyboardName.storyboard 中创建一个使用了当前类作为 StoryboardID 的类
     public class func CreateFromStoryboard(name: String) -> AnyObject! {
-        var classFullName = NSStringFromClass(self.classForCoder())
-        var className = classFullName!.componentsSeparatedByString(".").last as String! 
-        var mainStoryboard = UIStoryboard(name: name, bundle:nil)
+        let classFullName = NSStringFromClass(self.classForCoder())
+        let className = classFullName.componentsSeparatedByString(".").last as String!
+        let mainStoryboard = UIStoryboard(name: name, bundle:nil)
         return mainStoryboard.instantiateViewControllerWithIdentifier(className)
     }
     
@@ -31,7 +31,7 @@ extension UIViewController {
 //MARK:- 为 UIViewController ... 扩展一个 返回功能
 extension UIViewController {
     @IBAction func back() {
-        if let navigationController = self.navigationController where (navigationController.viewControllers.first as? UIViewController) != self {
+        if let navigationController = self.navigationController where navigationController.viewControllers.first != self {
             navigationController.popViewControllerAnimated(true)
         }
         else {
@@ -43,7 +43,7 @@ extension UIViewController {
 //MARK:- 为 UIViewController ... 提供一个标准的导航栏返回按钮配置
 extension UIViewController {
     public func configBackButton() {
-        var fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target:nil ,action:nil)
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target:nil ,action:nil)
         fixedSpace.width = -15;
         
         let button = UIButton(frame: CGRectMake(0, 0, 50, 44))
