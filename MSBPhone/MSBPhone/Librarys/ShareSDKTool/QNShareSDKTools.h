@@ -24,7 +24,7 @@
 /*!
  *  查询是否安装了某App
  */
-+ (BOOL)isInstalledWithType:(ShareType)type;
+//+ (BOOL)isInstalledWithType:(ShareType)type;
 
 /**
  *  ShareSDK配置分享

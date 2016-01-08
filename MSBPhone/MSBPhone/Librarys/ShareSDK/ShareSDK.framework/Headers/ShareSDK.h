@@ -39,7 +39,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）
+ *	@brief	ShareSDK类，为整个SDK的顶层接口类，所有功能都由此类进行提供（包括分享、授权等等）v2.11.2
  */
 ///#end
 ///#begin en
@@ -148,7 +148,7 @@
  *	@param 	statEnabled 	YES indicates the use of statistical functions, NO indicates they did not use statistical functions
  */
 ///#end
-+ (void)statEnabled:(BOOL)statEnabled;
++ (void)statEnabled:(BOOL)statEnabled __deprecated;
 
 ///#begin zh-cn
 /**
@@ -380,54 +380,6 @@
                      appSecret:(NSString *)appSecret
              qqApiInterfaceCls:(Class)qqApiInterfaceCls
                tencentOAuthCls:(Class)tencentOAuthCls;
-
-///#begin zh-cn
-/**
- *	@brief	连接网易微博应用以使用相关功能，此应用需要引用T163WeiboConnection.framework
- *          http://open.t.163.com上注册网易微博开放平台应用，并将相关信息填写到以下字段
- *
- *	@param 	appKey 	应用Key
- *	@param 	appSecret 	应用密钥
- *	@param 	redirectUri 	回调地址
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize NetEase Weibo platform，This platform need import T163WeiboConnection.framework
- *          Go to http://open.t.163.com and register NetEase Weibo open platform app，Then fill in the relevant information into the field below
- *
- *	@param 	appKey 	App key.
- *	@param 	appSecret 	App secret.
- *	@param 	redirectUri 	Redirect url.
- */
-///#end
-+ (void)connect163WeiboWithAppKey:(NSString *)appKey
-                        appSecret:(NSString *)appSecret
-                      redirectUri:(NSString *)redirectUri;
-
-///#begin zh-cn
-/**
- *	@brief	连接搜狐微博应用以使用相关功能，此应用需要引用SohuWeiboConnection.framework
- *          http://open.t.sohu.com上注册搜狐微博开放平台应用，并将相关信息填写到以下字段
- *
- *	@param 	consumerKey 	消费者Key
- *	@param 	consumerSecret 	消费者密钥
- *  @param  redirectUri     回调地址
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize Sohu Weibo platform，This platform need import SohuWeiboConnection.framework
- *          Go to http://open.t.sohu.com and register Sohu Weibo open platform app，Then fill in the relevant information into the field below
- *
- *	@param 	consumerKey 	Consumer key.
- *	@param 	consumerSecret 	Consumer secret.
- *  @param  redirectUri     Redirect url.
- */
-///#end
-+ (void)connectSohuWeiboWithConsumerKey:(NSString *)consumerKey
-                         consumerSecret:(NSString *)consumerSecret
-                            redirectUri:(NSString *)redirectUri;
 
 ///#begin zh-cn
 /**
@@ -698,34 +650,6 @@
 
 ///#begin zh-cn
 /**
- *	@brief	链接搜狐随身看应用以使用相关功能，此应用需要引用SohuConnection.framework
- *          http://open.sohu.com/上注册应用，并将相关信息填写以下字段
- *
- *  @since  ver2.1.0
- *
- *	@param 	appKey 	应用Key
- *	@param 	appSecret 	应用密钥
- *	@param 	redirectUri 	回调地址
- */
-///#end
-///#begin en
-/**
- *	@brief	Initialize Sohu SuiShenKan platform，This platform need import SohuConnection.framework
- *          Go to http://open.sohu.com/ register app，Then fill in the relevant information into the field below
- *
- *  @since  ver2.1.0
- *
- *	@param 	appKey 	App key.
- *	@param 	appSecret 	App secret.
- *	@param 	redirectUri 	Redirect url.
- */
-///#end
-+ (void)connectSohuKanWithAppKey:(NSString *)appKey
-                       appSecret:(NSString *)appSecret
-                     redirectUri:(NSString *)redirectUri;
-
-///#begin zh-cn
-/**
  *	@brief	链接Pocket以使用相关功能，此应用需要引用PocketConnection.framework
  *          http://getpocket.com/developer/上注册应用，并将相关信息填写以下字段
  *
@@ -920,7 +844,8 @@
  */
 ///#end
 + (void)connectDropboxWithAppKey:(NSString *)appKey
-                       appSecret:(NSString *)appSecret;
+                       appSecret:(NSString *)appSecret
+                     callbackUrl:(NSString *)callbackUrl;
 
 ///#begin zh-cn
 /**
@@ -1245,37 +1170,74 @@
 
 ///#begin zh-cn
 /**
- *	@brief	链接KaKao Talk以使用相关功能。
+ *  链接Kakao Talk/Story以使用相关功能
+ *  需要根据选择的平台导入 KaKaoTalkConnection.framework/KaKaoStoryConnection.framework
+ *  @param type        平台类型，可以选择ShareTypeKaKaoTalk 或 ShareTypeKaKaoStory
+ *  @param appKey      应用key
+ *  @param restApiKey  应用restApiKey
+ *  @param redirectUri 回调地址
+ *  @param sessionCls  导入 KakaoOpenSDK.framework, 然后传入[KOSession class];
  *
- *  @since  ver2.10.0
- *
+ *  @since ver2.12.2
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Initialize KaKao Talk platform，This platform need import KaKaoTalkConnection.framework
+ *  Initialize KaKao Talk/Story platform
+ *  This platform need import KaKaoTalkConnection.framework/KaKaoStoryConnection.framework
  *
- *	@since  ver2.10.0
+ *  @param type        platformType，which can be ShareTypeKaKaoTalk or ShareTypeKaKaoStory
+ *  @param appKey      AppKey
+ *  @param restApiKey  RestApiKey
+ *  @param redirectUri Redirect URI
+ *  @param sessionCls  import KakaoOpenSDK, then pass[KOSession class];
+ *
+ *  @since ver2.12.2
  */
 ///#end
-+ (void)connectKaKaoTalk;
++ (void)connectKakaoWithType:(ShareType)type
+                    ByAppKey:(NSString *)appKey
+                  restApiKey:(NSString *)restApiKey
+                 redirectUri:(NSString *)redirectUri
+                    KakaoCls:(Class)sessionCls;
 
 ///#begin zh-cn
 /**
- *	@brief	链接KaKao Story以使用相关功能。
+ *	@brief	链接支付宝朋友以使用相关功能
  *
- *  @since  ver2.10.0
+ *  @since  ver2.11.2
  *
+ *	@param 	appId               应用ID
+ *  @param 	openApiCls          头文件导入文件"APOpenAPI.h",将[APOpenAPI class]传入此参数
+ *  @param 	mediaMessageCls     将[APMediaMessage class]传入此参数
+ *  @param 	shareTextObjectCls  将[APShareTextObject class]传入此参数
+ *  @param 	shareImgObjectCls   将[APShareImageObject class]传入此参数
+ *  @param 	webObjectCls        将[APShareWebObject class]传入此参数
+ *  @param 	sendMsgToAPReqCls   将[APSendMessageToAPReq class]传入此参数
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Initialize KaKao Story platform，This platform need import KaKaoTalkConnection.framework
+ *	@brief	Initialize YiXin Session platform.
  *
- *	@since  ver2.10.0
+ *  @since  ver2.11.2
+ *
+ *	@param 	appId 	App id
+ *  @param 	openApiCls          import "APOpenAPI.h",then passed [APOpenAPI class] this parameter.
+ *  @param 	mediaMessageCls     passed [APMediaMessage class] this parameter
+ *  @param 	shareTextObjectCls  passed [APShareTextObject class] this parameter
+ *  @param 	shareImgObjectCls   passed [APShareImageObject class] this parameter
+ *  @param 	webObjectCls        passed [APShareWebObject class] this parameter
+ *  @param 	sendMsgToAPReqCls   passed [APSendMessageToAPReq class] this parameter
  */
 ///#end
-+ (void)connectKaKaoStory;
++ (void)connectAliPaySocialWithAppID:(NSString*)appId
+                          openApiCls:(Class)openApiCls
+                     mediaMessageCls:(Class)mediaMessageCls
+                  shareTextObjectCls:(Class)shareTextObjectCls
+                   shareImgObjectCls:(Class)shareImgObjectCls
+                   shareWebObjectCls:(Class)webObjectCls
+               sendMessageToAPReqCls:(Class)sendMsgToAPReqCls;
 
 ///#begin zh-cn
 /**
@@ -1454,6 +1416,83 @@
 ///#end
 + (void)importYiXinClass:(Class)yixinClass;
 
+///#begin zh-cn
+/**
+ *	@brief	在使用应用托管的时候才需要调用
+ *
+ *	@param 	sessionCls 	Kakao接口类型。导入 KakaoOpenSDK.framework, 然后传入[KOSession class]
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Import Kakao classes if need
+ *
+ *	@param 	sessionCls 	Kakao class。You should import KakaoOpenSDK.framework，Then passed [KOSession class] this parameter.
+ */
+///#end
++ (void)importKakaoCls:(Class)sessionCls;
+
+///#begin zh-cn
+/**
+ *	@brief	导入支付宝朋友所需要的类型，如果不使用支付宝朋友可以不调用
+ *
+ *  @since  ver2.11.2
+ *
+ *  @param 	openApiCls          头文件导入文件"APOpenAPI.h",将[APOpenAPI class]传入此参数
+ *  @param 	mediaMessageCls     将[APMediaMessage class]传入此参数
+ *  @param 	shareTextObjectCls  将[APShareTextObject class]传入此参数
+ *  @param 	shareImgObjectCls   将[APShareImageObject class]传入此参数
+ *  @param 	webObjectCls        将[APShareWebObject class]传入此参数
+ *  @param 	sendMsgToAPReqCls   将[APSendMessageToAPReq class]传入此参数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Import Alipay classes，If you not use the Alipay platform when not in call
+ *
+ *  @since  ver2.11.2
+ *
+ *  @param 	openApiCls          import "APOpenAPI.h",then passed [APOpenAPI class] this parameter.
+ *  @param 	mediaMessageCls     passed [APMediaMessage class] this parameter
+ *  @param 	shareTextObjectCls  passed [APShareTextObject class] this parameter
+ *  @param 	shareImgObjectCls   passed [APShareImageObject class] this parameter
+ *  @param 	webObjectCls        passed [APShareWebObject class] this parameter
+ *  @param 	sendMsgToAPReqCls   passed [APSendMessageToAPReq class] this parameter
+ */
+///#end
+
++ (void)importAlipayOpenApiCls:(Class)openApiCls
+               mediaMessageCls:(Class)mediaMessageCls
+            shareTextObjectCls:(Class)shareTextObjectCls
+             shareImgObjectCls:(Class)shareImgObjectCls
+             shareWebObjectCls:(Class)webObjectCls
+         sendMessageToAPReqCls:(Class)sendMsgToAPReqCls;
+
+///#begin zh-cn
+/**
+ *	@brief	如果你需要使用Facebook App（AppInvite）分享的功能,请导入Facebook SDK所需要的类型，
+ *  @brief  头文件处请 import <FBSDKCoreKit/FBSDKCoreKit.h> 和 <FBSDKShareKit/FBSDKShareKit.h>
+ *  @since  ver2.11.2
+ 
+ *  @param 	applicationDelegateCls  将[FBSDKApplicationDelegate class]传入此参数
+ *  @param 	appInviteDialogCls      将[FBSDKAppInviteDialog class]传入此参数
+ *  @param 	appInviteContentCls     将[FBSDKAppInviteContent class]传入此参数
+ */
+///#end
+///#begin en
+/**
+ *	@brief	Import Facebook classes，If you need Share App(AppInvite) to Facebook.
+ *  @brief 	You need to import <FBSDKCoreKit/FBSDKCoreKit.h> and <FBSDKShareKit/FBSDKShareKit.h>.
+ *  @since  ver2.11.2
+ 
+ *  @param 	applicationDelegateCls  passed [FBSDKApplicationDelegate class] this parameter
+ *  @param 	appInviteDialogCls      passed [FBSDKAppInviteDialog class] this parameter
+ *  @param 	appInviteContentCls     passed [APShareImageObject class] this parameter
+ */
+///#end
++ (void)importFacebookShareAppWithApplicationDelegateCls:(Class)applicationDelegateCls
+                                      appInviteDialogCls:(Class)appInviteDialogCls
+                                     appInviteContentCls:(Class)appInviteContentCls;
 
 #pragma mark 辅助
 
@@ -1648,9 +1687,9 @@
 /**
  *	@brief	创建分享内容对象，根据以下每个字段适用平台说明来填充参数值
  *
- *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
+ *	@param 	content 	分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	defaultContent 	默认分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1663,9 +1702,9 @@
 /**
  *	@brief	Create share content object. based on the following description of each field to fill the parameter values
  *
- *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
+ *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1688,9 +1727,9 @@
  *
  *  @since  ver2.4.1
  *
- *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
+ *	@param 	content 	分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	defaultContent 	默认分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1706,9 +1745,9 @@
  *
  *  @since  ver2.4.1
  *
- *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
+ *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -1733,9 +1772,9 @@
  *
  *  @since  ver2.6.0
  *
- *	@param 	content 	分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	defaultContent 	默认分享内容（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
- *	@param 	image 	分享图片（新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝）
+ *	@param 	content 	分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	defaultContent 	默认分享内容（新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝）
+ *	@param 	image 	分享图片（新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、拷贝、短信）
  *	@param 	title 	标题（QQ空间、人人、微信、QQ）
  *	@param 	url 	链接（QQ空间、人人、instapaper、微信、QQ）
  *	@param 	description 	主体内容（人人）
@@ -1752,9 +1791,9 @@
  *
  *  @since  ver2.6.0
  *
- *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
- *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、NetEase Weibo、Sohu Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy）
+ *	@param 	content 	Share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	defaultContent 	Default share content string.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy）
+ *	@param 	image 	Image attachment object.（Sina Weibo、Tencent Weibo、Douban、RenRen、KaiXin、Facebook、Twitter、Mail、Print、WeChat、QQ、Copy、SMS）
  *	@param 	title 	Title string.（QZone、RenRen、WeChat、QQ）
  *	@param 	url 	Url string.（QZone、RenRen、Instapaper、WeChat、QQ）
  *	@param 	description 	Description string（RenRen）
@@ -2213,6 +2252,13 @@
 ///#end
 + (NSString *)version;
 
+/**
+ *  获取SDK版本，等同于+ (NSString *)version，接口兼容需要。
+ *
+ *  @return 版本号
+ */
++ (NSString *)sdkVer;
+
 ///#begin zh-cn
 /**
  *	@brief	设置UI显示风格，默认为iOS7风格
@@ -2426,7 +2472,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	创建授权控制器，此方法用于自定义授权页面时使用,可以自由控制授权UI及过程。(注：微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。)
+ *	@brief	创建授权控制器，此方法用于自定义授权页面时使用,可以自由控制授权UI及过程。(注：邮件、短信、打印、拷贝类型不支持授权功能。)
  *
  *  @since  ver2.6.0    修改返回类型
  *
@@ -2437,7 +2483,7 @@
 ///#end
 ///#begin en
 /**
- *	@brief	Create an authorize controller，This method is used when the custom authorization page, you can freely control the authorization UI and process. (Note: WeChat, QQ, Mail, SMS, Print, Copy does not support authorization feature.)
+ *	@brief	Create an authorize controller，This method is used when the custom authorization page, you can freely control the authorization UI and process. (Note: Mail, SMS, Print, Copy does not support authorization feature.)
  *
  *  @since  ver2.6.0    Fix return type.
  *
@@ -2450,7 +2496,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	显示授权界面，(注：微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。)
+ *	@brief	显示授权界面，(注：邮件、短信、打印、拷贝类型不支持授权功能。)
  *
  *	@param 	type    社会化平台类型
  *  @param  options 授权选项，如果为nil则表示使用默认设置
@@ -2459,7 +2505,7 @@
 ///#end
 ///#begin en
 /**
- *	@brief	Show authorize view，(Note: WeChat, QQ, Mail, SMS, Print, Copy does not support authorization feature.)
+ *	@brief	Show authorize view，(Note: Mail, SMS, Print, Copy does not support authorization feature.)
  *
  *	@param 	type    Platform type.
  *  @param  options Authorized options，Used to authorization for custom configuration（Such as: whether the automatic authorization, authorization view style, etc.）Default nil.
@@ -2472,7 +2518,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	判断是否授权,微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。
+ *	@brief	判断是否授权,邮件、短信、打印、拷贝类型不支持授权功能。
  *
  *	@param 	type 	社会化平台类型
  *
@@ -2492,14 +2538,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	取消授权,微信、QQ、邮件、短信、打印、拷贝类型不支持授权功能。
+ *	@brief	取消授权,邮件、短信、打印、拷贝类型不支持授权功能。
  *
  *	@param 	type 	社会化平台类型
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Cancel authorized. WeChat、QQ, Mail, SMS, Print, Copy dose not support authorized feature.
+ *	@brief	Cancel authorized.Mail, SMS, Print, Copy dose not support authorized feature.
  *
  *	@param 	type 	Platform type.
  */
@@ -2577,8 +2623,6 @@
  */
 ///#end
 + (NSArray *)authorizedUsersWithType:(ShareType)type;
-
-
 
 #pragma mark 用户信息
 
@@ -2689,7 +2733,6 @@
                       page:(id<ISSPage>)page
                authOptions:(id<ISSAuthOptions>)authOptions
                     result:(SSFriendsResultEvent)result;
-
 
 #pragma mark 分享
 
@@ -3290,6 +3333,19 @@
              statusBarTips:(BOOL)statusBarTips
                    targets:(NSArray *)targets
                     result:(SSPublishContentEventHandler)result;
+
+#pragma mark - 分享推荐页面
+
+/**
+ *  显示自定义cell模块，用法类似如下
+ *  
+    [ShareSDK onShowWidgets:^NSArray *{
+        UIView *view1 = [[UIView alloc] initWithFrame:CGRectZero];
+        UIView *view2 = [[UIView alloc] initWithFrame:CGRectZero];
+        return @[view1, view2];
+    }];
+ */
++ (void)onShowWidgets:(NSArray *(^)())block;
 
 
 @end

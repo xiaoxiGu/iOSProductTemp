@@ -61,7 +61,7 @@ private extension QNNetworkTool {
         
         
         
-//        Alamofire.request(ParameterEncoding.URL.encode(self.productRequest(url, method: method), parameters: parameters).0).response {
+//        Alamofire.request(ParameterEncoding.encode(self.productRequest(url, method: method), parameters: parameters).0).response {
 //            if $3 != nil {  // 直接出错了
 //                completionHandler(request: $0, response: $1, data: $2, dictionary: nil, error: $3); return
 //            }

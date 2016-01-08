@@ -220,14 +220,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享内容(适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
+ *	@brief	获取分享内容(适用平台：新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
  *
  *	@return	分享内容
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Get share content(suitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
+ *	@brief	Get share content(suitable platform：Sina Weibo、Tencent Weibo、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
  *
  *	@return	share content string.
  */
@@ -253,7 +253,7 @@
 ///#begin zh-cn
 /**
  *	@brief	获取默认分享内容，在没有设置content时使用。
- *          (适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
+ *          (适用平台：新浪、腾讯、豆瓣、人人、开心、有道云笔记、facebook、twitter、邮件、打印、短信、微信、QQ、拷贝)
  *
  *	@return	默认分享内容
  */
@@ -261,7 +261,7 @@
 ///#begin en
 /**
  *	@brief	Get default share content，Used when there is no set content。
- *          (suitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
+ *          (suitable platform：Sina Weibo、Tencent Weibo、DouBan、Renren、KaiXin、YouDaoNote、Facebook、Twitter、Mail、Print、SMS、WeChat、QQ、Copy)
  *
  *	@return	Default share content string.
  */
@@ -286,14 +286,14 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享图片（适用平台：新浪、腾讯、网易、搜狐、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ）
+ *	@brief	获取分享图片（适用平台：新浪、腾讯、豆瓣、人人、开心、facebook、twitter、邮件、打印、微信、QQ、短信）
  *
  *	@return	分享图片
  */
 ///#end
 ///#begin en
 /**
- *	@brief	Get share image.（uitable platform：Sina Weibo、Tencent Weibo、NetEase、Sohu、DouBan、Renren、KaiXin、Facebook、Twitter、Mai、Print、WeChat、QQ）
+ *	@brief	Get share image.（uitable platform：Sina Weibo、Tencent Weibo、DouBan、Renren、KaiXin、Facebook、Twitter、Mai、Print、WeChat、QQ、SMS）
  *
  *	@return	image attachment object.
  */
@@ -318,7 +318,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	获取分享图片数组（适用平台：腾讯微博）
+ *	@brief	获取分享图片数组（适用平台：腾讯微博、Twitter）
  *
  *	@return	分享图片
  */
@@ -334,7 +334,7 @@
 
 ///#begin zh-cn
 /**
- *	@brief	设置分享图片数组（适用平台：腾讯微博）
+ *	@brief	设置分享图片数组（适用平台：腾讯微博、Twitter）
  *
  *	@param 	image 	分享图片
  */
@@ -562,12 +562,48 @@
                       url:(NSString *)url
                     image:(id<ISSCAttachment>)image;
 
+///#begin zh-cn
+/**
+ *	@brief	添加QQ内容单元，制定QQ分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
+ *
+ *	@param 	type 	分享类型,请参考SSPublishContentMediaType
+ *	@param 	content 	分享内容
+ *	@param 	title 	标题
+ *	@param 	url 	URL地址
+ *	@param 	image 	分享图片
+ *  @param  audioFlashUrl 音频URL地址(缩略图播放地址)
+ *  @param  videoFlashUrl 视频URL地址(缩略图播放地址)
+ */
+///#end
+///#begin en
+/**
+ *	@brief	add QQ content unit，When custom QQ share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
+ *
+ *	@param 	type 	Media type. Please see SSPublishContentMediaType
+ *	@param 	content 	Share content string.
+ *	@param 	title 	Title string
+ *	@param 	url 	URL string
+ *	@param 	image 	Image attachment object
+ *  @param  audioFlashUrl audio url (thumbnail pic button)
+ *  @param  videoFlashUrl video url (thumbnail pic button)
+ */
+- (void)addQQUnitWithType:(NSNumber *)type
+                  content:(NSString *)content
+                    title:(NSString *)title
+                      url:(NSString *)url
+            audioFlashURL:(NSString *)audioFlashURL
+            videoFlashURL:(NSString *)videoFlashURL
+                    image:(id<ISSCAttachment>)image;
+
 
 ///#begin zh-cn
 /**
  *	@brief	添加短信内容单元，制定短信分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
  *
  *	@param 	content 	分享内容
+ *	@param 	subject 	分享主题 iOS (7.0 and later)
+ *	@param 	attachments 	分享附件（id<ISSActtachment>类型组成的数组）iOS (7.0 and later)
+ *	@param 	recipients 	收信人 iOS (7.0 and later)
  */
 ///#end
 ///#begin en
@@ -575,12 +611,22 @@
  *	@brief	add SMS content unit. When custom SMS share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
  *
  *	@param 	content 	Share content string
+ *	@param 	subject 	subject iOS (7.0 and later)
+ *	@param 	attachments attachments（the type of array element is id<ISSActtachment>）iOS (7.0 and later)
+ *	@param 	recipients 	recipients iOS (7.0 and later)
  */
 ///#end
 - (void)addSMSUnitWithContent:(NSString *)content;
 
+- (void)addSMSUnitWithContent:(NSString *)content
+                      subject:(NSString *)subject
+                  attachments:(NSArray *)attachments
+                           to:(NSArray*)recipients;
+
 ///#begin zh-cn
 /**
+ *  @deprecated 请使用[addQQSpaceUnitWithContent:title:url:description:images:videoAssetURL:type:]代替
+ *
  *	@brief	添加QQ空间内容单元，制定QQ空间分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
  *
  *	@param 	title 	标题
@@ -597,6 +643,9 @@
 ///#end
 ///#begin en
 /**
+ *
+ * @deprecated please use[addQQSpaceUnitWithContent:title:url:description:images:videoAssetURL:type:]instead
+ *
  *	@brief	add QZone content unit， When custom QZone share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
  *
  *	@param 	title 	Title string
@@ -621,6 +670,40 @@
                            type:(NSNumber *)type
                         playUrl:(NSString *)playUrl
                            nswb:(NSNumber *)nswb;
+
+///#begin zh-cn
+/**
+ *  添加QQ空间内容单元，制定QQ空间分享时的内容使用此参数，如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
+ *
+ *  @since 2.12.2
+ *
+ *  @param title         标题
+ *  @param url           链接
+ *  @param description   描述
+ *  @param image         图片
+ *  @param type          分享类型
+ */
+///#end
+///#begin en
+/**
+ *  add QZone content unit， When custom QZone share content use this method，If the parameter is set
+ *  to INHERIT_VALUE. will using the parent parameter value.
+ *
+ *  @since 2.12.2
+ *
+ *  @param title         title
+ *  @param url           url
+ *  @param description   desciption
+ *  @param image         image
+ *  @param type          share media type
+ */
+///#end
+- (void)addQQSpaceUnitWithtitle:(NSString *)title
+                            url:(NSString*)url
+                    description:(NSString *)description
+                          image:(id<ISSCAttachment>)image
+                           type:(NSNumber *)type;
+
 
 ///#begin zh-cn
 /**
@@ -740,22 +823,6 @@
                       message:(NSString *)message
                         image:(id<ISSCAttachment>)image
                       caption:(NSString *)captions;
-
-///#begin zh-cn
-/**
- *	@brief	添加搜狐随身看内容单元
- *
- *	@param 	url 	书签的URL
- */
-///#end
-///#begin en
-/**
- *	@brief	Add Sohu SuiShenKan content unit.
- *
- *	@param 	url 	Bookmark link
- */
-///#end
-- (void)addSohuKanUnitWithUrl:(NSString *)url;
 
 ///#begin zh-cn
 /**
@@ -963,53 +1030,6 @@
 - (void)addTencentWeiboUnitWithContent:(NSString *)content
                             imageArray:(NSArray *)imageArray
                     locationCoordinate:(SSCLocationCoordinate2D *)locationCoordinate;
-
-
-///#begin zh-cn
-/**
- *	@brief	添加搜狐微博内容单元
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	内容
- *	@param 	image 	图片
- */
-///#end
-///#begin en
-/**
- *	@brief	Add Sohu Weibo content unit
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	Content string.
- *	@param 	image 	Image attachment object.
- */
-///#end
-- (void)addSohuWeiboUnitWithContent:(NSString *)content
-                              image:(id<ISSCAttachment>)image;
-
-///#begin zh-cn
-/**
- *	@brief	添加网易微博内容单元
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	内容
- *	@param 	image 	图片
- */
-///#end
-///#begin en
-/**
- *	@brief	Add NetEase Weibo content unit
- *
- *  @since  ver2.2.0
- *
- *	@param 	content 	Content string.
- *	@param 	image 	Image attachment object.
- */
-///#end
-- (void)add163WeiboUnitWithContent:(NSString *)content
-                             image:(id<ISSCAttachment>)image;
 
 ///#begin zh-cn
 /**
@@ -1733,62 +1753,65 @@
                              video:(id<ISSCAttachment>)video;
 
 
+
 ///#begin zh-cn
 /**
  *  添加KaKaoTalk内容单元。定制KaKaoTalk分享时内容使用此方法。如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
  *
- *  @param type               分享内容类型，支持SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeApp
- *  @param content            分享内容
- *  @param title              标题
- *  @param url                链接地址
- *  @param appName            应用名
- *  @param appVersion         应用版本
- *  @param appBundleId        应用的Bundle ID
- *  @param iosDownloadUrl     iOS的应用下载地址
- *  @param androidDownloadUrl Android的应用下载地址
- *  @param executeUrl         运行应用的URL
+ *  @param type             分享内容类型，支持SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeApp
+ *  @param content          分享内容
+ *  @param image            分享图片
+ *  @param imageSizeValue   图片尺寸。
+ *  @param title            链接标题
+ *  @param url              链接URL地址
+ *  @param appTitle         分享应用标题
+ *  @param andriodExecParam 启动安卓版应用时传入参数
+ *  @param iphoneExecParam  启动iphone版应用时传入参数
+ *  @param ipadExecParam    启动ipad版应用时传入参数
  */
 ///#end
 ///#begin en
 /**
  *  Add KaKaoTalk content unit，When custom KaKaoTalk share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
  *
- *  @param type               Share type，Only support SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeApp
- *  @param content            Content string
- *  @param title              Title
- *  @param url                URL string
- *  @param appName            Application name
- *  @param appVersion         Application version
- *  @param appBundleId        Bundle ID of Application
- *  @param iosDownloadUrl     Application download URL for iOS
- *  @param androidDownloadUrl Application download URL for Android
- *  @param executeUrl         Execute URL
+ *  @param type             Share type，Only support SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeApp
+ *  @param content          Content string
+ *  @param image            image attachment
+ *  @param imageSizeValue   image size.if you want default size,please pass CGSizeZero
+ *  @param title            link title string
+ *  @param url              link url string
+ *  @param appTitle         app title string
+ *  @param andriodExecParam pass params when android app start
+ *  @param iphoneExecParam  pass params when iphone app start
+ *  @param ipadExecParam    pass params when ipad app start
  */
 ///#end
+
 - (void)addKaKaoTalkUnitWithType:(NSNumber *)type
                          content:(NSString *)content
+                           image:(id<ISSCAttachment>)image
+                  imageSizeValue:(NSValue *)imageSizeValue
                            title:(NSString *)title
                              url:(NSString *)url
-                         appName:(NSString *)appName
-                      appVersion:(NSString *)appVersion
-                     appBundleId:(NSString *)appBundleId
-                  iosDownloadUrl:(NSString *)iosDownloadUrl
-              androidDownloadUrl:(NSString *)androidDownloadUrl
-                      executeUrl:(NSString *)executeUrl;
+                  appButtonTitle:(NSString *)appTitle
+                andriodExecParam:(NSDictionary *)andriodExecParam
+                 iphoneExecParam:(NSDictionary *)iphoneExecParam
+                   ipadExecParam:(NSDictionary *)ipadExecParam;
+
+
 
 ///#begin zh-cn
 /**
  *  添加KaKaoStory内容单元。定制KaKaoStory分享时内容使用此方法。如果参数设置为INHERIT_VALUE则默认使用父级类型相关参数
  *
- *  @param type        分享内容类型，支持SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeMusic,SSPublishContentMediaTypeVideo
- *  @param content     分享内容
- *  @param title       标题
- *  @param fileUrl     文件地址
- *  @param description 描述
- *  @param image       配图
- *  @param appName     应用名
- *  @param appVersion  应用版本
- *  @param appBundleId appBundleID
+ *  @param type               分享内容类型，支持SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeImage
+ *  @param content            分享内容
+ *  @param images             图片数组
+ *  @param url                链接地址
+ *  @param iphoneMarketParam  iphone应用下载地址
+ *  @param androidMarketParam 安卓应用下载地址
+ *  @param permission         查看权限：F 表示好友可以查看，A 表示任何人可以查看，M 表示私有，默认为A
+ *  @param enableShare        是否允许分享，当查看权限为好友查(F)看时，该选项有效，可以设置内容是否允许再分享
  */
 ///#end
 ///#begin en
@@ -1806,16 +1829,27 @@
  *  @param appBundleId Bundle ID of Application
  */
 ///#end
+
+/**
+ *  Add KaKaoStory content unit，When custom KaKaoStory share content use this method，If the parameter is set to INHERIT_VALUE. will using the parent parameter value.
+ *
+ *  @param type               Share type，Only Support SSPublishContentMediaTypeText,SSPublishContentMediaTypeNews,SSPublishContentMediaTypeImage
+ *  @param content            Content string
+ *  @param images             image array
+ *  @param url                URL string
+ *  @param iphoneMarketParam  iphone market url string
+ *  @param androidMarketParam android market ur string
+ *  @param permission         read permission ,"A" for all can read,"F" for only friends can read,"M" for only private.Default "A"
+ *  @param enableShare        whether allow to second-share.This param only work when permission is "F"
+ */
 - (void)addKaKaoStoryUnitWithType:(NSNumber *)type
                           content:(NSString *)content
-                            title:(NSString *)title
-                          fileUrl:(NSString *)fileUrl
-                      description:(NSString *)description
-                            image:(id<ISSCAttachment>)image
-                          appName:(NSString *)appName
-                       appVersion:(NSString *)appVersion
-                      appBundleId:(NSString *)appBundleId;
-
+                            images:(NSArray *)images
+                              url:(NSString *)url
+                iphoneMarketParam:(NSString *)iphoneMarketParam
+               androidMarketParam:(NSString *)androidMarketParam
+                       permission:(NSString *)permission
+                      enableShare:(BOOL)enableShare;
 
 
 @end
