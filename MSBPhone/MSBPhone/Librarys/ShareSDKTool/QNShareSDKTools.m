@@ -7,10 +7,10 @@
 //
 
 #import "QNShareSDKTools.h"
-//#import "WXApi.h"
-//#import "WeiboSDK.h"
-//#import <TencentOpenAPI/QQApiInterface.h>
-//#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
 
 #define kLogShare(...) ;//NSLog(__VA_ARGS__)
 
@@ -45,27 +45,27 @@
 /*!
  *  查询某授权是否有了
  */
-//+ (BOOL)hasAuthorizedWithType:(ShareType)type {
-//    return [ShareSDK hasAuthorizedWithType:type];
-//}
++ (BOOL)hasAuthorizedWithType:(ShareType)type {
+    return [ShareSDK hasAuthorizedWithType:type];
+}
 
 /*!
  *  查询是否安装了某App
  */
-//+ (BOOL)isInstalledWithType:(ShareType)type {
-//    switch (type) {
-//        case ShareTypeQQ:
-//        case ShareTypeQQSpace:
-//            return [QQApiInterface isQQInstalled];
-//        case ShareTypeWeixiFav:
-//        case ShareTypeWeixiSession:
-//        case ShareTypeWeixiTimeline:
-//            return [WXApi isWXAppInstalled];
-//        default:
-//            NSLog(@"判断分享是否安装未做设置 %d", type);
-//            break;
-//    }
-//    return NO;
++ (BOOL)isInstalledWithType:(ShareType)type {
+    switch (type) {
+        case ShareTypeQQ:
+        case ShareTypeQQSpace:
+            return [QQApiInterface isQQInstalled];
+        case ShareTypeWeixiFav:
+        case ShareTypeWeixiSession:
+        case ShareTypeWeixiTimeline:
+            return [WXApi isWXAppInstalled];
+        default:
+            NSLog(@"判断分享是否安装未做设置 %d", type);
+            break;
+    }
+    return NO;
 //    typedef enum
 //    {
 //        ShareTypeSinaWeibo = 1,         /**< 新浪微博 */
@@ -113,42 +113,42 @@
 //        ShareTypeAny = 99               /**< 任意平台 */
 //    }
 //    ShareType;
-//}
+}
 
 // ShareSDK配置分享
 + (void)loadShareSDK {
-//    NSLog(@"当前ShareSDK的版本号：%@", [ShareSDK version]);
+    NSLog(@"当前ShareSDK的版本号：%@", [ShareSDK version]);
 
-//    [ShareSDK registerApp:kShareSDKAppKey];
+    [ShareSDK registerApp:kShareSDKAppKey];
     
     /**
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
-     http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
+     http:open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
      **/
-//    [ShareSDK connectSinaWeiboWithAppKey:kSinaAppKey
-//                               appSecret:kSinaAppSecret
-//                             redirectUri:kSinaRedirectUrl];
+    [ShareSDK connectSinaWeiboWithAppKey:kSinaAppKey
+                               appSecret:kSinaAppSecret
+                             redirectUri:kSinaRedirectUrl];
 
-    //分享到空间
-//    [ShareSDK connectQZoneWithAppKey:kQQAppID
-//                           appSecret:kQQSpaceSecret
-//                   qqApiInterfaceCls:[QQApiInterface class]
-//                     tencentOAuthCls:[TencentOAuth class]];
-//    //添加QQ应用
-//    [ShareSDK connectQQWithQZoneAppKey:kQQAppID
-//                     qqApiInterfaceCls:[QQApiInterface class]
-//                       tencentOAuthCls:[TencentOAuth class]];
-//    /**
-//     连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
-//     http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
-//     **/
-//    [ShareSDK connectWeChatWithAppId:kWXAppID wechatCls:[WXApi class]];
-//    
+//    分享到空间
+    [ShareSDK connectQZoneWithAppKey:kQQAppID
+                           appSecret:kQQSpaceSecret
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+    //添加QQ应用
+    [ShareSDK connectQQWithQZoneAppKey:kQQAppID
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+    /**
+     连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
+     http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
+     **/
+    [ShareSDK connectWeChatWithAppId:kWXAppID wechatCls:[WXApi class]];
     
-    //添加短信分享
-//    [ShareSDK connectSMS];
-//    //添加邮件分享
-//    [ShareSDK connectMail];
+    
+//    添加短信分享
+    [ShareSDK connectSMS];
+    //添加邮件分享
+    [ShareSDK connectMail];
 }
 
 // 分享链接
@@ -158,102 +158,102 @@
         NSAssert(NO, @"分享链接的时候，链接居然为空！");
         return;
     }
-//    id<ISSCAttachment> attImg = image ? [ShareSDK jpegImageWithImage:image quality:1] : nil;
-//    
-//    if (shareType == ShareTypeSinaWeibo || shareType == ShareTypeTencentWeibo || shareType ==ShareTypeMail || shareType ==ShareTypeSMS) { // 如果是新浪微博分享则在内容里面添加链接地址
-//        content = [NSString stringWithFormat:@"%@%@", content, url];
-//    }
-//    
-//    // 构造分享内容
-//    id<ISSContent> publishContent = [ShareSDK content:content
-//                                       defaultContent:@""
-//                                                image:attImg
-//                                                title:title
-//                                                  url:url
-//                                          description:content
-//                                            mediaType:SSPublishContentMediaTypeNews];
-//    
-//    // 定制微信朋友圈信息
-//    if (shareType == ShareTypeWeixiTimeline) {
-//        NSString *wxUrl = [NSString stringWithFormat:@"%@?isWeixin=1", url];
-//        [publishContent addWeixinTimelineUnitWithType:@(SSPublishContentMediaTypeNews)
-//                                              content:INHERIT_VALUE
-//                                                title:content /*微信朋友圈，没有title，直接使用content*/
-//                                                  url:wxUrl
-//                                                image:attImg
-//                                         musicFileUrl:INHERIT_VALUE
-//                                              extInfo:nil
-//                                             fileData:nil
-//                                         emoticonData:nil];
-//    }
-//    
-//    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
-//                                                         allowCallback:NO
-//                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
-//                                                          viewDelegate:nil
-//                                               authManagerViewDelegate:nil];
-//    
-//    id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:nil];
-//    
-//    [ShareSDK shareContent:publishContent type:(ShareType)shareType authOptions:authOptions shareOptions:shareOptions statusBarTips:YES result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//        if (state != SSResponseStateBegan) {
-//            switch (state) {
-//                case SSResponseStateSuccess:    // 分享成功
-//                    callback(YES);  
-//                    break;
-//                case SSResponseStateCancel:     // 
-//                    kLogShare(@"分享取消");
-//                    break;
-//                case SSResponseStateFail:
-//                default:
-//                    kLogShare(@"分享错误:（%d）%@", [error errorCode], [error errorDescription]);
-//                    /* errorCode
-//                    -10001 取消添加好友
-//                    -11001 此方法已过时，请使用getFriendsWithPage方法代替
-//                    -14001 分享失败!
-//                    -22001 尚未集成微信接口
-//                    -22002 未知的消息发送类型
-//                    -22003 尚未安装微信
-//                    -22004 当前微信版本不支持该功能
-//                    -22005 请求微信OpenApi失败
-//                    -22006 尚未设置微信的URL Scheme -24001 发送失败
-//                    -24002 尚未安装QQ
-//                    -24003 当前QQ版本不支持该功能
-//                    -24004 未知的消息发送类型
-//                    -24005 尚未集成QQ接口
-//                    -24006 尚未设置QQ的URL Scheme
-//                     
-//                    -103 尚未授权
-//                    */
-//                    NSString *errorDescription = nil;
-//                    switch ([error errorCode]) {
-//                        case -103:
-//                            errorDescription = @""; // 新浪授权取消，不给出提示
-//                            break;
-//                        case -22003:
-//                            errorDescription = @"请安装微信客户端";
-//                            break;
-//                        case -24002:
-//                            errorDescription = @"请安装QQ手机客户端";
-//                            break;
-//                        default: 
-//                            errorDescription = nil;
-//                            break;
-//                    }
-//                    
-//                    if (errorDescription) {
-//                        if (errorDescription.length > 0) {
-//                            [[[UIAlertView alloc] initWithTitle:nil message:errorDescription delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
-//                        }
-//                    }
-//                    else {
-//                        callback(NO);   // 分享失败
-//                    }
-//                    
-//                    break;
-//            }
-//        }
-//    }];
+    id<ISSCAttachment> attImg = image ? [ShareSDK jpegImageWithImage:image quality:1] : nil;
+    
+    if (shareType == ShareTypeSinaWeibo || shareType == ShareTypeTencentWeibo || shareType ==ShareTypeMail || shareType ==ShareTypeSMS) { // 如果是新浪微博分享则在内容里面添加链接地址
+        content = [NSString stringWithFormat:@"%@%@", content, url];
+    }
+    
+    // 构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:content
+                                       defaultContent:@""
+                                                image:attImg
+                                                title:title
+                                                  url:url
+                                          description:content
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    // 定制微信朋友圈信息
+    if (shareType == ShareTypeWeixiTimeline) {
+        NSString *wxUrl = [NSString stringWithFormat:@"%@?isWeixin=1", url];
+        [publishContent addWeixinTimelineUnitWithType:@(SSPublishContentMediaTypeNews)
+                                              content:INHERIT_VALUE
+                                                title:content /*微信朋友圈，没有title，直接使用content*/
+                                                  url:wxUrl
+                                                image:attImg
+                                         musicFileUrl:INHERIT_VALUE
+                                              extInfo:nil
+                                             fileData:nil
+                                         emoticonData:nil];
+    }
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:NO
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:nil];
+    
+    id<ISSShareOptions> shareOptions = [ShareSDK simpleShareOptionsWithTitle:@"内容分享" shareViewDelegate:nil];
+    
+    [ShareSDK shareContent:publishContent type:(ShareType)shareType authOptions:authOptions shareOptions:shareOptions statusBarTips:YES result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+        if (state != SSResponseStateBegan) {
+            switch (state) {
+                case SSResponseStateSuccess:    // 分享成功
+                    callback(YES);  
+                    break;
+                case SSResponseStateCancel:     // 
+                    kLogShare(@"分享取消");
+                    break;
+                case SSResponseStateFail:
+                default:
+                    kLogShare(@"分享错误:（%d）%@", [error errorCode], [error errorDescription]);
+                    /* errorCode
+                    -10001 取消添加好友
+                    -11001 此方法已过时，请使用getFriendsWithPage方法代替
+                    -14001 分享失败!
+                    -22001 尚未集成微信接口
+                    -22002 未知的消息发送类型
+                    -22003 尚未安装微信
+                    -22004 当前微信版本不支持该功能
+                    -22005 请求微信OpenApi失败
+                    -22006 尚未设置微信的URL Scheme -24001 发送失败
+                    -24002 尚未安装QQ
+                    -24003 当前QQ版本不支持该功能
+                    -24004 未知的消息发送类型
+                    -24005 尚未集成QQ接口
+                    -24006 尚未设置QQ的URL Scheme
+                     
+                    -103 尚未授权
+                    */
+                    NSString *errorDescription = nil;
+                    switch ([error errorCode]) {
+                        case -103:
+                            errorDescription = @""; // 新浪授权取消，不给出提示
+                            break;
+                        case -22003:
+                            errorDescription = @"请安装微信客户端";
+                            break;
+                        case -24002:
+                            errorDescription = @"请安装QQ手机客户端";
+                            break;
+                        default: 
+                            errorDescription = nil;
+                            break;
+                    }
+                    
+                    if (errorDescription) {
+                        if (errorDescription.length > 0) {
+                            [[[UIAlertView alloc] initWithTitle:nil message:errorDescription delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil] show];
+                        }
+                    }
+                    else {
+                        callback(NO);   // 分享失败
+                    }
+                    
+                    break;
+            }
+        }
+    }];
 }
 
 // 分享GIF图片
