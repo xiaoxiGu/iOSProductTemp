@@ -10,9 +10,9 @@ import UIKit
 
 // MARK: - Path
 // MARK:  Caches 目录
-let PATH_CACHES = (NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray).firstObject as! NSString
+let PATH_CACHES = (NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true))[0]
 // MARK:  Documents 目录
-let PATH_DOCUMENTS = (NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentationDirectory, NSSearchPathDomainMask.UserDomainMask, true) as NSArray).firstObject as! NSString
+let PATH_DOCUMENTS = (NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentationDirectory, NSSearchPathDomainMask.UserDomainMask, true))[0]
 
 // MARK: - Application information
 // MARK:  App ID (必须与 iTunes Connect 上设置的一致)

@@ -11,10 +11,6 @@
 */
 import UIKit.UIColor
 
-//MARK:- 高度 & 宽度 缩放系数
-let COEFFICIENT_OF_HEIGHT_ZOOM = Screen_Height/568.0
-let COEFFICIENT_OF_WIDTH_ZOOM = Screen_Width/320.0
-
 //MARK:- App主色
 let appThemeColor = UIColor(red: 0/255.0, green: 153/255.0, blue: 255/255.0, alpha: 1.0)
 

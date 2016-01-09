@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 //MARK:- 服务器地址
 private let kServerAddress = { () -> String in
@@ -57,47 +58,43 @@ private extension QNNetworkTool {
     - parameter completionHandler: 请求完成后的回掉， 如果 dictionary 为nil，那么 error 就不可能为空
     */
     private class func requestForSelf(url: NSURL?, method: String, parameters: [String : AnyObject]?, completionHandler: (request: NSURLRequest, response: NSHTTPURLResponse?, data: AnyObject?, dictionary: NSDictionary?, error: NSError?) -> Void) {
-        
-        
-        
-        
-//        Alamofire.request(ParameterEncoding.encode(self.productRequest(url, method: method), parameters: parameters).0).response {
-//            if $3 != nil {  // 直接出错了
-//                completionHandler(request: $0, response: $1, data: $2, dictionary: nil, error: $3); return
-//            }
-//            var errorJson: NSErrorPointer = nil
-//            let jsonObject: AnyObject?
-//            do {
-//                jsonObject = try NSJSONSerialization.JSONObjectWithData($2 as! NSData, options: NSJSONReadingOptions.MutableContainers)
-//            } catch var error as NSError {
-//                errorJson.memory = error
-//                jsonObject = nil
-//            } catch {
-//                fatalError()
-//            }
-//            var dictionary = jsonObject as? NSDictionary
-//            
-//            if errorJson != nil {   // Json解析过程出错
-//                completionHandler(request: $0, response: $1, data: $2, dictionary: nil, error: errorJson.memory); return
-//            }
-//            
-//            if dictionary == nil {  // Json解析结果出错
-//                completionHandler(request: $0, response: $1, data: $2, dictionary: nil, error: NSError(domain: "JSON解析错误", code: 10086, userInfo: nil)); return
-//            }
-//            
-//            // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
-//            if let jsonData = dictionary!["jsonData"] as? NSDictionary {
-//                dictionary = jsonData
-//            }
-//            
-//            let errorCode = Int((dictionary!["errorCode"] as! String))
-//            if errorCode == 1000 || errorCode == 0 {
-//                completionHandler(request: $0, response: $1, data: $2, dictionary: dictionary, error: nil)
-//            }
-//            else {
-//                completionHandler(request: $0, response: $1, data: $2, dictionary: dictionary, error: NSError(domain: "服务器返回错误", code:errorCode ?? 10088, userInfo: nil))
-//            }
-//        }
+        Alamofire.request(ParameterEncoding.URL.encode(self.productRequest(url, method: method), parameters: parameters).0).response {
+            if $3 != nil {  // 直接出错了
+                completionHandler(request: $0!, response: $1, data: $2, dictionary: nil, error: $3); return
+            }
+            let errorJson: NSErrorPointer = nil
+            let jsonObject: AnyObject?
+            do {
+                jsonObject = try NSJSONSerialization.JSONObjectWithData($2!, options: NSJSONReadingOptions.MutableContainers)
+            } catch let error as NSError {
+                errorJson.memory = error
+                jsonObject = nil
+            } catch {
+                fatalError()
+            }
+            var dictionary = jsonObject as? NSDictionary
+            
+            if errorJson != nil {   // Json解析过程出错
+                completionHandler(request: $0!, response: $1, data: $2, dictionary: nil, error: errorJson.memory); return
+            }
+            
+            if dictionary == nil {  // Json解析结果出错
+                completionHandler(request: $0!, response: $1, data: $2, dictionary: nil, error: NSError(domain: "JSON解析错误", code: 10086, userInfo: nil)); return
+            }
+            
+            // 这里有可能对数据进行了jsonData的包装，有可能没有进行jsonData的包装
+            if let jsonData = dictionary!["jsonData"] as? NSDictionary {
+                dictionary = jsonData
+            }
+            
+            let errorCode = Int((dictionary!["errorCode"] as! String))
+            if errorCode == 1000 || errorCode == 0 {
+                completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: nil)
+            }
+            else {
+                completionHandler(request: $0!, response: $1, data: $2, dictionary: dictionary, error: NSError(domain: "服务器返回错误", code:errorCode ?? 10088, userInfo: nil))
+            }
+        }
     }
     
     /**

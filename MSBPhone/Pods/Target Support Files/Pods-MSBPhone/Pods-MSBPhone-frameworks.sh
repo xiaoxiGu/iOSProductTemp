@@ -84,20 +84,18 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-MSBPhone/Alamofire.framework"
   install_framework "Pods-MSBPhone/BlocksKit.framework"
   install_framework "Pods-MSBPhone/ColorUtils.framework"
-  install_framework "Pods-MSBPhone/MBProgressHUD.framework"
+  install_framework "Pods-MSBPhone/Mantle.framework"
   install_framework "Pods-MSBPhone/PureLayout.framework"
   install_framework "Pods-MSBPhone/Reachability.framework"
   install_framework "Pods-MSBPhone/SDWebImage.framework"
   install_framework "Pods-MSBPhone/libextobjc.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-MSBPhone/Alamofire.framework"
   install_framework "Pods-MSBPhone/BlocksKit.framework"
   install_framework "Pods-MSBPhone/ColorUtils.framework"
-  install_framework "Pods-MSBPhone/MBProgressHUD.framework"
+  install_framework "Pods-MSBPhone/Mantle.framework"
   install_framework "Pods-MSBPhone/PureLayout.framework"
   install_framework "Pods-MSBPhone/Reachability.framework"
   install_framework "Pods-MSBPhone/SDWebImage.framework"

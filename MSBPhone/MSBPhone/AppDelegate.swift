@@ -77,8 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func onResp(resp:BaseResp){
         if (resp.isKindOfClass(PayResp.self)){
             let response = resp
-            let title = "支付结果"
-            let msg = NSString(format: "errcode:%d",response.errCode)
+//            let title = "支付结果"
+//            let msg = NSString(format: "errcode:%d",response.errCode)
             //            let alert = UIAlertView(title: title, message: msg, delegate: nil, cancelButtonTitle: "OK", otherButtonTitles:nil, nil)
             //            alert.show()
             if response.errCode == WXSuccess.rawValue{

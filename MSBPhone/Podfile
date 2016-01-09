@@ -1,14 +1,18 @@
 platform :ios, '8.0'
 
 use_frameworks!
-pod 'Alamofire', '~> 3.0'
+#pod 'Alamofire', '~> 3.0'
 pod 'Reachability'
 pod 'PureLayout'
 pod 'ColorUtils'
 pod 'libextobjc'
 pod 'BlocksKit'
 pod 'SDWebImage'
-pod 'MBProgressHUD'
+#pod 'MBProgressHUD'
+pod 'BlocksKit'
+pod 'UMengAnalytics-NO-IDFA'
+pod 'PureLayout'
+pod 'Mantle', '~>1.5'
 
 target 'MSBPhone' do
     

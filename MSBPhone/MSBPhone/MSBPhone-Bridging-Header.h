@@ -27,4 +27,6 @@
 
 //加密相关
 #import "NSString+AES.h"
+
+#import "OpenUDID.h"
 #endif
