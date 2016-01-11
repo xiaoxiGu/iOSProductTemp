@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController,QNInterceptorNavigationBarHiddenProtocol {
+class HomeViewController: UIViewController,QNInterceptorNavigationBarProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()

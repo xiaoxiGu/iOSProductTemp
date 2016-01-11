@@ -40,16 +40,57 @@ extension UIViewController {
     }
 }
 
-//MARK:- 为 UIViewController ... 提供一个标准的导航栏返回按钮配置
-extension UIViewController {
-    public func configBackButton() {
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target:nil ,action:nil)
-        fixedSpace.width = -15;
+private var navigationKey: Void?
+private var navigationItemKey: Void?
+public extension UIViewController{
+    var xNavigationBar: UINavigationBar?{
+        get{
+           return objc_getAssociatedObject(self, &navigationKey) as? UINavigationBar
+        }
+        set{
+            self.willChangeValueForKey("xNavigationBar")
+            objc_setAssociatedObject(self, &navigationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            self.didChangeValueForKey("xNavigationBar")
+        }
+    }
+    
+    var xNavigationBarItem: UINavigationItem?{
+        get{
+            return objc_getAssociatedObject(self, &navigationItemKey) as? UINavigationItem
+        }
+        set{
+            self.willChangeValueForKey("xNavigationBarItem")
+            objc_setAssociatedObject(self, &navigationItemKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            self.didChangeValueForKey("xNavigationBarItem")
+        }
+    }
+    
+    func configNavigationBarItem(title:String?) -> UINavigationItem?{
         
-        let button = UIButton(frame: CGRectMake(0, 0, 50, 44))
-        button.setImage(UIImage(named: "navigation_back_icon")!.imageWithColor(appThemeColor), forState: .Normal)
-        button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.navigationItem.leftBarButtonItems = [fixedSpace, UIBarButtonItem(customView: button)]
+        if self.xNavigationBarItem != nil{
+            let titleLable = UILabel()
+            titleLable.textAlignment = NSTextAlignment.Center
+            titleLable.font = UIFont.systemFontOfSize(18.0)
+            titleLable.frame = CGRectMake(-(Screen_Width - 40)/2, -15, Screen_Width - 40, 30)
+            titleLable.text = title
+            let view = UIView()
+            view.addSubview(titleLable)
+            
+            self.xNavigationBarItem?.titleView = view
+            
+            let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target:nil ,action:nil)
+            fixedSpace.width = -15;
+            
+            if let navigationController = self.navigationController where navigationController.viewControllers.first != self {
+                let button = UIButton(frame: CGRectMake(0, 0, 50, 44))
+                button.setImage(UIImage(named: "second")!.imageWithColor(appThemeColor), forState: .Normal)
+                button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)
+                
+                self.xNavigationBarItem!.leftBarButtonItems = [fixedSpace, UIBarButtonItem(customView: button)]
+            }
+        }
+        return self.xNavigationBarItem
     }
 }
+
+

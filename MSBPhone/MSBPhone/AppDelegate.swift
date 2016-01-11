@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         //开启样式控制
-//        QNInterceptor.start()
+        QNInterceptor.start()
         //开启支付功能
 //        PayTool.sharedPayTool()
         //集成环信SDK

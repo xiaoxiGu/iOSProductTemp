@@ -52,6 +52,7 @@
 		6798B0921B44D1B600B1D366 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798AFA41B44D1B500B1D366 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6798B0931B44D1B600B1D366 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6798AFA51B44D1B500B1D366 /* README.md */; };
 		9753ECFCD7BFB39C11FB6012 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9058F5D8C98588BC3F895704 /* Pods.framework */; };
+		AA16E6151C43DC3B00EA065E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16E6131C43DC3B00EA065E /* libMobClickLibrary.a */; };
 		AA20BE3B1C3D3400007287CD /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20BE3A1C3D3400007287CD /* libicucore.tbd */; };
 		AA20BE3D1C3D3414007287CD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20BE3C1C3D3414007287CD /* CoreText.framework */; };
 		AA20BE3F1C3D3443007287CD /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20BE3E1C3D3443007287CD /* ImageIO.framework */; };
@@ -187,6 +188,8 @@
 		9058F5D8C98588BC3F895704 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2B20E622870057F7D03014 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9D24BE13D3D421C71578292 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AA16E6131C43DC3B00EA065E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		AA16E6141C43DC3B00EA065E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		AA20BE011C3D110C007287CD /* QNShareSDKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNShareSDKTools.h; sourceTree = "<group>"; };
 		AA20BE021C3D110C007287CD /* QNShareSDKTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNShareSDKTools.m; sourceTree = "<group>"; };
 		AA20BE3A1C3D3400007287CD /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -385,6 +388,7 @@
 				AAA2138F1C3F62FB00C767C0 /* ShareSDKCoreService.framework in Frameworks */,
 				AA20BE3D1C3D3414007287CD /* CoreText.framework in Frameworks */,
 				AAA2139A1C3F62FB00C767C0 /* TencentOpenAPI.framework in Frameworks */,
+				AA16E6151C43DC3B00EA065E /* libMobClickLibrary.a in Frameworks */,
 				AAA2138D1C3F62FB00C767C0 /* MOBFoundation.framework in Frameworks */,
 				AA20BE3B1C3D3400007287CD /* libicucore.tbd in Frameworks */,
 				6700E6971B428BB600A0FA15 /* SystemConfiguration.framework in Frameworks */,
@@ -517,6 +521,7 @@
 		6700E6261B423E6E00A0FA15 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				AA16E6121C43DC3B00EA065E /* UMAnalytics_Sdk_3.6.7 */,
 				AA8F5CFF1C40F04D003CA3D0 /* MBProgressHUD */,
 				AA8F5CDC1C40ADE1003CA3D0 /* Source */,
 				AAA213B01C3F64FD00C767C0 /* PayLib */,
@@ -655,6 +660,15 @@
 				6798AFA51B44D1B500B1D366 /* README.md */,
 			);
 			path = OpenUDID;
+			sourceTree = "<group>";
+		};
+		AA16E6121C43DC3B00EA065E /* UMAnalytics_Sdk_3.6.7 */ = {
+			isa = PBXGroup;
+			children = (
+				AA16E6131C43DC3B00EA065E /* libMobClickLibrary.a */,
+				AA16E6141C43DC3B00EA065E /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_3.6.7;
 			sourceTree = "<group>";
 		};
 		AA20BE001C3D110C007287CD /* ShareSDKTool */ = {
@@ -1301,24 +1315,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Connection",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Core",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Connection",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Core",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Connection",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Core",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/FacebookSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/googlePlusSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/KaKaoSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/Pinterest.embeddedframework",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/UI",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/PayLib/AliPaySdk",
 				);
 				GCC_PREFIX_HEADER = "MSBPhone/MSBPhone-Prefix.pch";
@@ -1333,15 +1333,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/APSocialSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/PayLib/AliPaySdk",
+					"$(PROJECT_DIR)/MSBPhone/Librarys/UMAnalytics_Sdk_3.6.7",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1363,24 +1360,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Connection",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Core",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Connection",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Core",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Connection",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Core",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/FacebookSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/googlePlusSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/KaKaoSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/Pinterest.embeddedframework",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/UI",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/PayLib/AliPaySdk",
 				);
 				GCC_PREFIX_HEADER = "MSBPhone/MSBPhone-Prefix.pch";
@@ -1395,15 +1378,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK2/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Pods/ShareSDK2/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/APSocialSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/MSBPhone/Librarys/ShareSDK/Extend/YiXinSDK",
 					"$(PROJECT_DIR)/MSBPhone/Librarys/PayLib/AliPaySdk",
+					"$(PROJECT_DIR)/MSBPhone/Librarys/UMAnalytics_Sdk_3.6.7",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
