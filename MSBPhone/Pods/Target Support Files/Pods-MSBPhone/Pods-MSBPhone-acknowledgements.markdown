@@ -118,6 +118,11 @@ THE SOFTWARE.
 
 
 
+## UMengAnalytics-NO-IDFA
+
+Copyright 2011 - 2015 UMeng.com. All rights reserved.
+
+
 ## libextobjc
 
 **Copyright (c) 2012 - 2014 Justin Spahr-Summers**

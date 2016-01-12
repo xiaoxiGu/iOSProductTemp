@@ -52,7 +52,7 @@
 		6798B0911B44D1B600B1D366 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6798AFA11B44D1B500B1D366 /* README.md */; };
 		6798B0921B44D1B600B1D366 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 6798AFA41B44D1B500B1D366 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6798B0931B44D1B600B1D366 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 6798AFA51B44D1B500B1D366 /* README.md */; };
-		AA16E6151C43DC3B00EA065E /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA16E6131C43DC3B00EA065E /* libMobClickLibrary.a */; };
+		AA0E80A91C44FFD200FD5A84 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E80A71C44FFD200FD5A84 /* libMobClickLibrary.a */; };
 		AA20BE3B1C3D3400007287CD /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20BE3A1C3D3400007287CD /* libicucore.tbd */; };
 		AA20BE3D1C3D3414007287CD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20BE3C1C3D3414007287CD /* CoreText.framework */; };
 		AA20BE3F1C3D3443007287CD /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA20BE3E1C3D3443007287CD /* ImageIO.framework */; };
@@ -188,8 +188,8 @@
 		6798AFA51B44D1B500B1D366 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		67ABEB901B4546C500E8C1ED /* MSBPhone-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSBPhone-Prefix.pch"; sourceTree = "<group>"; };
 		A919E2577F7BC0899AFD656E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		AA16E6131C43DC3B00EA065E /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		AA16E6141C43DC3B00EA065E /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		AA0E80A71C44FFD200FD5A84 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		AA0E80A81C44FFD200FD5A84 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		AA20BE011C3D110C007287CD /* QNShareSDKTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNShareSDKTools.h; sourceTree = "<group>"; };
 		AA20BE021C3D110C007287CD /* QNShareSDKTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNShareSDKTools.m; sourceTree = "<group>"; };
 		AA20BE3A1C3D3400007287CD /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -397,6 +397,7 @@
 				AAB7C81F1C44E26A006EA6CC /* libSDWebImage.a in Frameworks */,
 				AAB7C8111C44E249006EA6CC /* libColorUtils.a in Frameworks */,
 				AAA2139E1C3F62FB00C767C0 /* libWeiboSDK.a in Frameworks */,
+				AA0E80A91C44FFD200FD5A84 /* libMobClickLibrary.a in Frameworks */,
 				AAA2137F1C3F62FB00C767C0 /* QZoneConnection.framework in Frameworks */,
 				AAA2138B1C3F62FB00C767C0 /* AGCommon.framework in Frameworks */,
 				AA20BE431C3D3466007287CD /* libsqlite3.tbd in Frameworks */,
@@ -406,7 +407,6 @@
 				AAA2138F1C3F62FB00C767C0 /* ShareSDKCoreService.framework in Frameworks */,
 				AA20BE3D1C3D3414007287CD /* CoreText.framework in Frameworks */,
 				AAA2139A1C3F62FB00C767C0 /* TencentOpenAPI.framework in Frameworks */,
-				AA16E6151C43DC3B00EA065E /* libMobClickLibrary.a in Frameworks */,
 				AAA2138D1C3F62FB00C767C0 /* MOBFoundation.framework in Frameworks */,
 				AA20BE3B1C3D3400007287CD /* libicucore.tbd in Frameworks */,
 				6700E6971B428BB600A0FA15 /* SystemConfiguration.framework in Frameworks */,
@@ -530,7 +530,7 @@
 		6700E6261B423E6E00A0FA15 /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
-				AA16E6121C43DC3B00EA065E /* UMAnalytics_Sdk_3.6.7 */,
+				AA0E80A61C44FFD200FD5A84 /* UMAnalytics_Sdk_3.6.7 */,
 				AA8F5CFF1C40F04D003CA3D0 /* MBProgressHUD */,
 				AA8F5CDC1C40ADE1003CA3D0 /* Source */,
 				AAA213B01C3F64FD00C767C0 /* PayLib */,
@@ -680,11 +680,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		AA16E6121C43DC3B00EA065E /* UMAnalytics_Sdk_3.6.7 */ = {
+		AA0E80A61C44FFD200FD5A84 /* UMAnalytics_Sdk_3.6.7 */ = {
 			isa = PBXGroup;
 			children = (
-				AA16E6131C43DC3B00EA065E /* libMobClickLibrary.a */,
-				AA16E6141C43DC3B00EA065E /* MobClick.h */,
+				AA0E80A71C44FFD200FD5A84 /* libMobClickLibrary.a */,
+				AA0E80A81C44FFD200FD5A84 /* MobClick.h */,
 			);
 			path = UMAnalytics_Sdk_3.6.7;
 			sourceTree = "<group>";

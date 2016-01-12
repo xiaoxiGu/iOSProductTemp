@@ -60,34 +60,7 @@ func removeObjectAtUserDefaults(key: String) {
     NSUserDefaults.standardUserDefaults().synchronize()
 }
 
-// MARK: - 获取最顶层的ViewController
-func topViewController() -> UIViewController? {
-    var resultViewController: UIViewController? = nil
-    // 多window的情况下， 需要对window进行有效选择选择
-    if let rootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController {
-        resultViewController = __topViewController(rootViewController)
-        while resultViewController?.presentedViewController != nil {
-            resultViewController = resultViewController?.presentedViewController
-        }
-    }
-    return resultViewController
-}
 
-private func __topViewController(object: AnyObject!) -> UIViewController? {
-    if let navigationController = object as? UINavigationController {
-        return __topViewController(navigationController.viewControllers.last)
-    }
-    else if let tabBarController = object as? UITabBarController {
-        if tabBarController.selectedIndex < tabBarController.viewControllers?.count {
-            return __topViewController(tabBarController.viewControllers![tabBarController.selectedIndex])
-        }
-    }
-    else if let vc = object as? UIViewController {
-        return vc
-    }
-    
-    return nil
-}
 
 // MARK: - 版本比较(无法进行比较会返回nil)
 func compareVersion(version1: String, version2: String) -> NSComparisonResult? {

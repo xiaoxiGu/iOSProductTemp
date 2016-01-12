@@ -58,6 +58,7 @@ PODS:
   - SDWebImage (3.7.4):
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
+  - UMengAnalytics-NO-IDFA (3.6.7)
 
 DEPENDENCIES:
   - BlocksKit
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - PureLayout
   - Reachability
   - SDWebImage
+  - UMengAnalytics-NO-IDFA
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
@@ -76,5 +78,6 @@ SPEC CHECKSUMS:
   PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
 
 COCOAPODS: 0.39.0

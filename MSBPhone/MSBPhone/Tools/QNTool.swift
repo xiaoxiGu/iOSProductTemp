@@ -262,16 +262,16 @@ set {
 }
 extension QNTool {
     class func showCommentAppAlertView() {
-//        UIAlertView.bk_showAlertViewWithTitle("程序员牺牲陪女神的时间，加班加点做出的产品，你狠心不给个评分吗？", message: nil, cancelButtonTitle: "狠心拒绝", otherButtonTitles: ["去评分"]) { (alertView, index) -> Void in
-//            switch index {
-//            case 0: // 残忍拒绝
-//                theRemainingNumberShowComment = nil
-//            case 1: // 去评论
-//                theRemainingNumberShowComment = -1
-//                UIApplication.sharedApplication().openURL(NSURL(string: APP_URL_IN_ITUNES)!)
-//            default: break
-//            }
-//        }
+        UIAlertView.bk_showAlertViewWithTitle("程序员牺牲陪女神的时间，加班加点做出的产品，你狠心不给个评分吗？", message: nil, cancelButtonTitle: "狠心拒绝", otherButtonTitles: ["去评分"]) { (alertView, index) -> Void in
+            switch index {
+            case 0: // 残忍拒绝
+                theRemainingNumberShowComment = nil
+            case 1: // 去评论
+                theRemainingNumberShowComment = -1
+                UIApplication.sharedApplication().openURL(NSURL(string: APP_URL_IN_ITUNES)!)
+            default: break
+            }
+        }
     }
     
     // 自动显示弹出App评论框
@@ -293,11 +293,11 @@ extension QNTool {
 //MARK:- 判断当前网络状况
 extension QNTool {
     //网络连接状态
-//    class func netWorkStatus() -> NetworkStatus {
-//        let netWorkStatic = Reachability.reachabilityForInternetConnection()
-//        netWorkStatic.startNotifier()
-//        return netWorkStatic.currentReachabilityStatus()
-//    }
+    class func netWorkStatus() -> NetworkStatus {
+        let netWorkStatic = Reachability.reachabilityForInternetConnection()
+        netWorkStatic.startNotifier()
+        return netWorkStatic.currentReachabilityStatus()
+    }
 }
 
 //MARK:- 自动提示编辑昵称
@@ -308,39 +308,3 @@ extension QNTool {
         }
     }
 }
-
-
-// MARK: - 让 Navigation 支持右滑返回
-extension QNTool: UIGestureRecognizerDelegate {
-    
-    /**
-    让 Navigation 支持右滑返回
-    
-    - parameter navigationController: 需要支持的 UINavigationController 对象
-    */
-    class func addInteractive(navigationController: UINavigationController?) {
-        navigationController?.interactivePopGestureRecognizer!.enabled = true
-        navigationController?.interactivePopGestureRecognizer!.delegate = qnToolInstance
-    }
-    
-    /**
-    移除 Navigation 右滑返回
-    
-    - parameter navigationController: 需要支持的 UINavigationController 对象
-    */
-    class func removeInteractive(navigationController: UINavigationController?) {
-        navigationController?.interactivePopGestureRecognizer!.enabled = false
-        navigationController?.interactivePopGestureRecognizer!.delegate = nil
-    }
-    
-    // MARK: UIGestureRecognizerDelegate
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if let vc = topViewController() where gestureRecognizer == vc.navigationController?.interactivePopGestureRecognizer {
-            return (vc.navigationController!.viewControllers.count > 1)
-        }
-        return false // 其他情况，则不支持
-    }
-    
-    
-}
-

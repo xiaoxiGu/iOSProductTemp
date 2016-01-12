@@ -9,7 +9,7 @@ pod 'libextobjc'
 pod 'SDWebImage'
 #pod 'MBProgressHUD'
 pod 'BlocksKit'
-#pod 'UMengAnalytics-NO-IDFA'
+pod 'UMengAnalytics-NO-IDFA'
 pod 'PureLayout'
 pod 'Mantle', '~>1.5'
 

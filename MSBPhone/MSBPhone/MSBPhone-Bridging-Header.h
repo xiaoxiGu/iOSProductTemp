@@ -10,36 +10,24 @@
 #define MSBPhone_MSBPhone_Bridging_Header_h
 
 #import <UIKit/UIKit.h>
-//环信IM
-//#import "EaseMob.h"
-
+#import <objc/runtime.h>
 //支付
 #import "PayTool.h"
-#import "WXApiObject.h"
-
 //和三方库
 #import "Aspects.h"
 #import <BlocksKit/UIAlertView+BlocksKit.h>
 #import <BlocksKit/UIControl+BlocksKit.h>
-#import <Reachability/Reachability.h>        // 判断网络状况
+#import <Reachability/Reachability.h>
 
-
-
+#import <ColorUtils/ColorUtils.h>
 //加密相关
 #import "NSString+AES.h"
-
+//
 #import "OpenUDID.h"
-
-#import <objc/runtime.h>
-
+//友盟统计
 #import "MobClick.h"
-
-#import "WXApi.h"
-#import "WeiboSDK.h"
-
 // 分享ShareSDK
 #import "QNShareSDKTools.h"
+#import "WXApi.h"
 
-//#import <ColorUtils/ColorUtils.h>
-#import <ColorUtils/ColorUtils.h>
 #endif
