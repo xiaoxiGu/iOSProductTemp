@@ -82,22 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods/BlocksKit.framework"
-  install_framework "Pods/ColorUtils.framework"
-  install_framework "Pods/Mantle.framework"
-  install_framework "Pods/PureLayout.framework"
-  install_framework "Pods/Reachability.framework"
-  install_framework "Pods/SDWebImage.framework"
-  install_framework "Pods/libextobjc.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods/BlocksKit.framework"
-  install_framework "Pods/ColorUtils.framework"
-  install_framework "Pods/Mantle.framework"
-  install_framework "Pods/PureLayout.framework"
-  install_framework "Pods/Reachability.framework"
-  install_framework "Pods/SDWebImage.framework"
-  install_framework "Pods/libextobjc.framework"
-fi

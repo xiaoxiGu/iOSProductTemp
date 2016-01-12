@@ -19,7 +19,8 @@
 
 //和三方库
 #import "Aspects.h"
-#import <BlocksKit/BlocksKit.h>
+#import <BlocksKit/UIAlertView+BlocksKit.h>
+#import <BlocksKit/UIControl+BlocksKit.h>
 #import <Reachability/Reachability.h>        // 判断网络状况
 
 
@@ -39,4 +40,6 @@
 // 分享ShareSDK
 #import "QNShareSDKTools.h"
 
+//#import <ColorUtils/ColorUtils.h>
+#import <ColorUtils/ColorUtils.h>
 #endif

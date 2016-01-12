@@ -29,13 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //集成分享
         QNShareSDKTools.loadSharePlatInit()
         
-        //集成环信SDK
-//        EaseMob.sharedInstance().registerSDKWithAppKey("mingshibao365#mingshibao", apnsCertName: "")
-//        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-//        EaseMob.sharedInstance().chatManager.asyncLoginWithUsername("10086", password: "123456", completion: { (array, error) -> Void in
-//            print("111")
-//        }, onQueue: nil)
-        
         // 启动过渡页
 //        let allowShowStartPages = !NSUserDefaults.standardUserDefaults().boolForKey(kKeyIsFirstStartApp)
 //        if allowShowStartPages {

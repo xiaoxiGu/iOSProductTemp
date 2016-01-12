@@ -1,6 +1,0 @@
-framework module ColorUtils {
-  umbrella header "ColorUtils-umbrella.h"
-
-  export *
-  module * { export * }
-}

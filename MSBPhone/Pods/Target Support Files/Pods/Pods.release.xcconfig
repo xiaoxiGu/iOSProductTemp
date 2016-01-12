@@ -1,6 +1,5 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/BlocksKit.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/ColorUtils.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Mantle.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/PureLayout.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Reachability.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/SDWebImage.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/libextobjc.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "BlocksKit" -framework "ColorUtils" -framework "Mantle" -framework "PureLayout" -framework "Reachability" -framework "SDWebImage" -framework "libextobjc"
-PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/ColorUtils" "${PODS_ROOT}/Headers/Public/Mantle" "${PODS_ROOT}/Headers/Public/PureLayout" "${PODS_ROOT}/Headers/Public/Reachability" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/libextobjc"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/BlocksKit" -isystem "${PODS_ROOT}/Headers/Public/ColorUtils" -isystem "${PODS_ROOT}/Headers/Public/Mantle" -isystem "${PODS_ROOT}/Headers/Public/PureLayout" -isystem "${PODS_ROOT}/Headers/Public/Reachability" -isystem "${PODS_ROOT}/Headers/Public/SDWebImage" -isystem "${PODS_ROOT}/Headers/Public/libextobjc"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"BlocksKit" -l"ColorUtils" -l"Mantle" -l"PureLayout" -l"Reachability" -l"SDWebImage" -l"libextobjc" -framework "Foundation" -framework "ImageIO" -framework "MessageUI" -framework "SystemConfiguration"
 PODS_ROOT = ${SRCROOT}/Pods
