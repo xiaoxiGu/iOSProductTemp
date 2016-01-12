@@ -135,7 +135,7 @@
 		6700E5E71B4238DA00A0FA15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6700E5E81B4238DA00A0FA15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6700E5EF1B4238DA00A0FA15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6700E5F11B4238DA00A0FA15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6700E5F11B4238DA00A0FA15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		6700E5F41B4238DA00A0FA15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6700E5FF1B4238DA00A0FA15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6700E6001B4238DA00A0FA15 /* MSBPhoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSBPhoneTests.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		6700E65A1B427DB800A0FA15 /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
 		6700E65B1B427DB800A0FA15 /* NSString+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AES.h"; sourceTree = "<group>"; };
 		6700E65C1B427DB800A0FA15 /* NSString+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AES.m"; sourceTree = "<group>"; };
-		6700E6651B427E4E00A0FA15 /* MSBPhone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MSBPhone-Bridging-Header.h"; sourceTree = "<group>"; };
+		6700E6651B427E4E00A0FA15 /* MSBPhone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MSBPhone-Bridging-Header.h"; path = "../MSBPhone-Bridging-Header.h"; sourceTree = "<group>"; };
 		6700E6961B428BB600A0FA15 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6700E6981B428BDB00A0FA15 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6700E69A1B428BE600A0FA15 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -461,20 +461,17 @@
 		6700E5E51B4238DA00A0FA15 /* MSBPhone */ = {
 			isa = PBXGroup;
 			children = (
-				6700E6651B427E4E00A0FA15 /* MSBPhone-Bridging-Header.h */,
 				6700E6111B423B1C00A0FA15 /* Constents.swift */,
 				6700E6121B423B1C00A0FA15 /* QNSharedDatas.swift */,
 				6700E6131B423B1C00A0FA15 /* QNStyleAttribute.swift */,
 				6700E6141B423B1C00A0FA15 /* QNStatistical.swift */,
+				6700E5E81B4238DA00A0FA15 /* AppDelegate.swift */,
+				6700E62D1B426B9E00A0FA15 /* UI */,
+				AA0E80AA1C45015B00FD5A84 /* Source */,
 				6700E6191B423B6700A0FA15 /* Tools */,
 				674DE0621B43C33200762B69 /* Extension */,
 				6700E6261B423E6E00A0FA15 /* Librarys */,
 				6700E60C1B423AD200A0FA15 /* Base */,
-				6700E62D1B426B9E00A0FA15 /* UI */,
-				6700E5E81B4238DA00A0FA15 /* AppDelegate.swift */,
-				6700E5EE1B4238DA00A0FA15 /* Main.storyboard */,
-				6700E5F11B4238DA00A0FA15 /* Images.xcassets */,
-				6700E5F31B4238DA00A0FA15 /* LaunchScreen.xib */,
 				6700E5E61B4238DA00A0FA15 /* Supporting Files */,
 				6700E6A41B42927000A0FA15 /* Frameworks */,
 			);
@@ -687,6 +684,17 @@
 				AA0E80A81C44FFD200FD5A84 /* MobClick.h */,
 			);
 			path = UMAnalytics_Sdk_3.6.7;
+			sourceTree = "<group>";
+		};
+		AA0E80AA1C45015B00FD5A84 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6700E6651B427E4E00A0FA15 /* MSBPhone-Bridging-Header.h */,
+				6700E5EE1B4238DA00A0FA15 /* Main.storyboard */,
+				6700E5F11B4238DA00A0FA15 /* Images.xcassets */,
+				6700E5F31B4238DA00A0FA15 /* LaunchScreen.xib */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		AA20BE001C3D110C007287CD /* ShareSDKTool */ = {
@@ -1223,6 +1231,7 @@
 				6700E5EF1B4238DA00A0FA15 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		6700E5F31B4238DA00A0FA15 /* LaunchScreen.xib */ = {
@@ -1231,6 +1240,7 @@
 				6700E5F41B4238DA00A0FA15 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		AAA213241C3F62FB00C767C0 /* ShareSDKLocalizable.strings */ = {
