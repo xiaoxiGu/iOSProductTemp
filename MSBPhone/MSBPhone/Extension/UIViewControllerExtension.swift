@@ -31,7 +31,7 @@ extension UIViewController {
 //MARK:- 为 UIViewController ... 扩展一个 返回功能
 extension UIViewController {
     @IBAction func back() {
-        if let navigationController = self.navigationController where navigationController.viewControllers.first != self {
+        if let navigationController = self.navigationController where navigationController.viewControllers.count > 1 {
             navigationController.popViewControllerAnimated(true)
         }
         else {
@@ -81,7 +81,7 @@ public extension UIViewController{
             let fixedSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target:nil ,action:nil)
             fixedSpace.width = -15;
             
-            if let navigationController = self.navigationController where navigationController.viewControllers.first != self {
+            if let navigationController = self.navigationController where navigationController.viewControllers.count > 1 {
                 let button = UIButton(frame: CGRectMake(0, 0, 50, 44))
                 button.setImage(UIImage(named: "second")!.imageWithColor(appThemeColor), forState: .Normal)
                 button.addTarget(self, action: "back", forControlEvents: UIControlEvents.TouchUpInside)

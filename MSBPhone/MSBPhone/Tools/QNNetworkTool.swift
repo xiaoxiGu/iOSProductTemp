@@ -12,9 +12,7 @@ import Alamofire
 //MARK:- 服务器地址
 private let kServerAddress = { () -> String in
     "http://xite.qoocc.com/dc"          // 正式环境
-//    "http://v2.xite.qoocc.com"          // v2测试环境
-//    "http://192.168.20.133:7080/dc"     // 测试环境
-//    "http://test.xite.qoocc.com/dc"     // 测试环境 Added by 肖小丰 2015-6-5
+
 }()
 
 

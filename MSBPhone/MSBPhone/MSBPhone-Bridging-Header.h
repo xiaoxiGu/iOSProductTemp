@@ -19,11 +19,10 @@
 
 //和三方库
 #import "Aspects.h"
-#import <BlocksKit/UIAlertView+BlocksKit.h>
-//#import "Reachability.h"        // 判断网络状况
+#import <BlocksKit/BlocksKit.h>
+#import <Reachability/Reachability.h>        // 判断网络状况
 
-// 分享ShareSDK
-#import "QNShareSDKTools.h" 
+
 
 //加密相关
 #import "NSString+AES.h"
@@ -33,4 +32,11 @@
 #import <objc/runtime.h>
 
 #import "MobClick.h"
+
+#import "WXApi.h"
+#import "WeiboSDK.h"
+
+// 分享ShareSDK
+#import "QNShareSDKTools.h"
+
 #endif

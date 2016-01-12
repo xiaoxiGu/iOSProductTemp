@@ -40,7 +40,7 @@ static PayTool* sharedManager;
 
 +(void)WXPayWithOrderNumber:(NSString *)order_number OrderAmout:(NSString *)orderAmount OrderName:(NSString *)orderName
 {
-#warning 微信支付，未测试
+//#warning 微信支付，未测试
     [[WXPayClient shareInstance] payProduct:order_number OrderAmout:orderAmount OrderName:orderName];
 }
 

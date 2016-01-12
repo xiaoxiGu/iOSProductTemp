@@ -17,10 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        //开启样式控制
+        //开启样式控制,页面统计
         QNInterceptor.start()
         //开启支付功能
-//        PayTool.sharedPayTool()
+        PayTool.sharedPayTool()
+        //集成友盟统计
+        MobClick.startWithAppkey("abcd", reportPolicy: ReportPolicy(1), channelId: "")
+        MobClick.setAppVersion(APP_VERSION)
+        //集成微信支付
+        WXApi.registerApp("abcd")
+        //集成分享
+        QNShareSDKTools.loadSharePlatInit()
+        
         //集成环信SDK
 //        EaseMob.sharedInstance().registerSDKWithAppKey("mingshibao365#mingshibao", apnsCertName: "")
 //        EaseMob.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -89,5 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func shareSDKInit(){
+        
+    }
 }
 

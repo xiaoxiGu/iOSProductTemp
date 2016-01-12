@@ -11,6 +11,9 @@
 
 @interface QNShareSDKTools : NSObject
 
+//初始分享实例
++ (void)loadSharePlatInit;
+
 /*!
  *  取消所有本应用的授权
  */
